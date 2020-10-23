@@ -15,19 +15,20 @@
         <div class="x_content">
             {{ Form::open(['method' => 'post','route'=>'branch.store.student', 'enctype' => 'multipart/form-data']) }}
                 <div class="well" style="overflow: auto">
+                    <h2>Basic Details</h2>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="name">Applicant Name</label>
-                            <input type="text" class="form-control" name="name" value="{{old('name')}}"  placeholder="Enter Applicant Name">
+                            <input type="text" class="form-control" name="name" required value="{{old('name')}}"  placeholder="Enter Applicant Name">
                                 @if($errors->has('name'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                @enderror
+                                @endif
                         </div>  
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="father_name">Fathers Name</label>
-                            <input type="father_name" class="form-control" name="father_name" value="{{old('father_name')}}"  placeholder="Enter Father Name">
+                           <input type="text" class="form-control" name="father_name" required value="{{old('father_name')}}"  placeholder="Enter Applicant Father Name">
                                 @if($errors->has('father_name'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('father_name') }}</strong>
@@ -36,7 +37,7 @@
                         </div>                    
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" value="{{old('email')}}"  placeholder="Enter Email">
+                            <input type="email" class="form-control" name="email" required value="{{old('email')}}"  placeholder="Enter Email">
                                 @if($errors->has('email'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -93,6 +94,11 @@
                                 </span>
                             @enderror
                         </div> 
+                    </div>
+                </div>
+                <div class="well" style="overflow: auto">
+                    <h2>Course</h2>
+                    <div class="form-row mb-3">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="course">Course</label>
                             <select name="course" id="course" class="form-control">
@@ -116,11 +122,24 @@
                                 </span>
                             @enderror
                         </div>
-                    </div>
+                        <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
+                            <label for="sign">Signature</label>
+                            <input type="file" class="form-control" name="sign">
+                            @if($errors->has('sign'))
+                                <span class="invalid-feedback" role="alert" style="color:red">
+                                    <strong>{{ $errors->first('sign') }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>   
+                </div>
+                <div class="well" style="overflow: auto">
+                    <h3>Communication Details</h3>
+                    <h4><u>Present Address</u></h4>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" name="city" value="{{ old('city') }}" placeholder="Enter City">
+                            <input type="text" class="form-control" name="city" id="city" value="{{ old('city') }}" placeholder="Enter City">
                             @if($errors->has('city'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
                                     <strong>{{ $errors->first('city') }}</strong>
@@ -129,7 +148,7 @@
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="state">State</label>
-                            <input type="text" class="form-control" name="state" value="{{ old('state') }}" placeholder="Enter State">
+                            <input type="text" class="form-control" name="state" id="state" value="{{ old('state') }}" placeholder="Enter State">
                             @if($errors->has('state'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
                                     <strong>{{ $errors->first('state') }}</strong>
@@ -138,7 +157,7 @@
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="pin">Pin</label>
-                            <input type="number" class="form-control" name="pin" value="{{ old('pin') }}" placeholder="Enter PIN">
+                            <input type="number" class="form-control" name="pin" id="pin" value="{{ old('pin') }}" placeholder="Enter PIN">
                             @if($errors->has('pin'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
                                     <strong>{{ $errors->first('pin') }}</strong>
@@ -147,7 +166,7 @@
                         </div>
                     </div>
                     <div class="form-row mb-10">
-                        <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
+                        <div class="col-md-12 col-sm-12 col-xs-12 mb-3">
                             <label for="present_address">Present Address</label>
                             <textarea name="present_address" id="present_address" placeholder="Enter Present Address" class="form-control">{{ old('present_address') }}</textarea>
                             @if($errors->has('present_address'))
@@ -156,7 +175,46 @@
                                 </span>
                             @enderror
                         </div> 
-                        <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
+                    </div>
+                    <br>
+                    <h4><u>Permanent Address</u></h4>
+                    <div class="form-row mb-10">
+                        <div class="col-md-12 col-sm-12 col-xs-12 mb-3">
+                            <label for="check">Same as Present Address</label>
+                            <input type="checkbox" value="{{ old('check') }}"  onclick="filladd()" {{ old('check') == 'checked' ?'checked':''}} name="check" id="check">
+                        </div>
+                    </div>
+                    <div class="form-row mb-10">
+                        <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <label for="p_city">City</label>
+                            <input type="text" class="form-control" name="p_city" id="p_city" value="{{ old('p_city') }}" placeholder="Enter City">
+                            @if($errors->has('p_city'))
+                                <span class="invalid-feedback" role="alert" style="color:red">
+                                    <strong>{{ $errors->first('p_city') }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <label for="p_state">State</label>
+                            <input type="text" class="form-control" name="p_state" id="p_state" value="{{ old('p_state') }}" placeholder="Enter State">
+                            @if($errors->has('p_state'))
+                                <span class="invalid-feedback" role="alert" style="color:red">
+                                    <strong>{{ $errors->first('p_state') }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <label for="p_pin">Pin</label>
+                            <input type="number" class="form-control" name="p_pin" id="p_pin" value="{{ old('p_pin') }}" placeholder="Enter PIN">
+                            @if($errors->has('p_pin'))
+                                <span class="invalid-feedback" role="alert" style="color:red">
+                                    <strong>{{ $errors->first('p_pin') }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-row mb-10">
+                        <div class="col-md-12 col-sm-12 col-xs-12 mb-3">
                             <label for="permanent_address">Permanent Address</label>
                             <textarea name="permanent_address" id="permanent_address" class="form-control" placeholder="Enter Permanent Address">{{ old('permanent_address') }}</textarea>
                             @if($errors->has('permanent_address'))
@@ -166,42 +224,25 @@
                             @enderror
                         </div> 
                     </div>
+                </div>
+                <div class="well" style="overflow: auto">
+                    <h2>Qualification Details</h2>
                     <div class="form-row mb-3 input_fields_wrap">
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Exam Passed</label>
-                            <input type="text" name="exam_passed[]" class="form-control" placeholder="Exam Passed">
-                            @if($errors->has('exam_passed'))
-                                <span class="invalid-feedback" role="alert" >
-                                    <strong style="color:red">{{ $errors->first('exam_passed') }}</strong>
-                                </span>
-                            @enderror
+                            <input type="text" name="exam_passed[]" class="form-control" required placeholder="Exam Passed">
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Year of Passing</label>
-                            <input type="text" name="year_of_pass[]" value="{{ old('year_of_pass') }}" class="form-control" placeholder="Year of Passing">
-                            @if($errors->has('year_of_pass'))
-                                <span class="invalid-feedback" role="alert" >
-                                    <strong style="color:red">{{ $errors->first('year_of_pass') }}</strong>
-                                </span>
-                            @enderror
+                            <input type="text" name="year_of_pass[]" class="form-control" required placeholder="Year of Passing">
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Board/Council</label>
-                            <input type="text" name="board[]" class="form-control" value="{{ old('board') }}" placeholder="Board/Council">
-                            @if($errors->has('board'))
-                                <span class="invalid-feedback" role="alert" >
-                                    <strong style="color:red">{{ $errors->first('board') }}</strong>
-                                </span>
-                            @enderror
+                            <input type="text" name="board[]" class="form-control" required  placeholder="Board/Council">
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Marks</label>
-                            <input type="number" name="marks[]" class="form-control" value="{{ old('marks') }}" placeholder="Marks">
-                            @if($errors->has('marks'))
-                                <span class="invalid-feedback" role="alert" >
-                                    <strong style="color:red">{{ $errors->first('marks') }}</strong>
-                                </span>
-                            @enderror
+                            <input type="number" name="marks[]" class="form-control" required placeholder="Marks">
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <button class="btn btn-primary btn-rounded" id="add" style="margin-top: 24px;"> 
@@ -260,5 +301,28 @@
             e.preventDefault(); $(this).parent('div').remove(); x--;
         })
     });
+    function filladd(){
+        if(check.checked == true){
+                var present_address = document.getElementById("present_address").value;
+                var city = document.getElementById("city").value;
+                var state = document.getElementById("state").value;
+                var pin = document.getElementById("pin").value;
+
+                var copypresentaddress = present_address ;
+                var copyp_city = city;
+                var copyp_state = state;
+                var copyp_pin = pin;
+                document.getElementById("permanent_address").value = copypresentaddress;
+                document.getElementById("p_city").value = copyp_city;
+                document.getElementById("p_state").value = copyp_state;
+                document.getElementById("p_pin").value = copyp_pin;
+        }
+        else if(check.checked == false){
+            document.getElementById("permanent_address").value='';
+            document.getElementById("p_city").value='';
+            document.getElementById("p_state").value='';
+            document.getElementById("p_pin").value='';
+        }
+    }
     </script>
 @endsection

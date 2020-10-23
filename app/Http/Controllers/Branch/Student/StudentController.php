@@ -22,11 +22,14 @@ class StudentController extends Controller
             'category' => 'required',
             'course' => 'required',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'sign' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'city' =>  'required|string',
             'state' =>  'required|string',
             'pin' =>  'required|numeric',
             'present_address' => 'required',
+            'exam_passed.*' => 'required',
         ]);
-        // dd(1);
+
+        // $student =
     }
 }

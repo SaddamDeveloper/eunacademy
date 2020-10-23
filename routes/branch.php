@@ -19,5 +19,11 @@ Route::group(['namespace' => 'Branch'],function(){
             Route::post('/store/student', 'StudentController@store')->name('branch.store.student');
             Route::get('/list/student', 'StudentController@list')->name('branch.list.student');
         });
+
+        // Branch
+        Route::group(['namespace' => 'Course'], function () {
+            Route::resource('course', 'CourseController');
+            Route::get('/status/{id}/{status}', 'CourseController@status')->name('course.status');
+        });
     });
 });
