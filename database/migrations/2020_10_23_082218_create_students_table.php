@@ -19,10 +19,10 @@ class CreateStudentsTable extends Migration
             $table->string('name')->nullable();
             $table->string('father_name')->nullable();
             $table->date('dob')->nullable();
-            $table->boolean('gender')->comment('1=Male, 2=Female')->nullable();
+            $table->string('gender')->comment('Male, Female')->nullable();
             $table->string('email')->unique();
             $table->string('mobile')->unique();
-            $table->tinyInteger('category')->nullable();
+            $table->string('category')->nullable();
             $table->tinyInteger('course')->nullable();
             $table->string('photo')->nullable();
             $table->string('sign')->nullable();

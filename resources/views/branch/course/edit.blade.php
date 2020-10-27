@@ -13,7 +13,9 @@
         </div>
         @include('branch.include.error')
         <div class="x_content">
-            <form action="{{ route('course.update', compact('course')) }}" method="PATCH">
+            <form action="{{ route('branch.course.update') }}" method="POST">
+                @csrf
+                <input type="hidden" value="{{ $course->id }}" name="id">
                 <div class="well" style="overflow: auto">
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">

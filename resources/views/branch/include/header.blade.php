@@ -88,7 +88,7 @@
                   <li><a><i class="fa fa-users"></i> Student <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('branch.add.student')}}">Add Student</a></li>
-                      <li><a href="{{route('branch.list.student')}}">Student List</a></li>
+                      <li><a href="{{route('branch.show.student')}}">Student List</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-users"></i> Course <span class="fa fa-chevron-down"></span></a>

@@ -17,13 +17,23 @@ Route::group(['namespace' => 'Branch'],function(){
         Route::group(['namespace' => 'Student'], function () {
             Route::get('/add/student', 'StudentController@index')->name('branch.add.student');
             Route::post('/store/student', 'StudentController@store')->name('branch.store.student');
+            Route::get('/show/student', 'StudentController@show')->name('branch.show.student');
             Route::get('/list/student', 'StudentController@list')->name('branch.list.student');
+            Route::get('/view/student/{id}', 'StudentController@view')->name('branch.student.view');
+            Route::get('/edit/student/{id}', 'StudentController@edit')->name('branch.student.edit');
+            Route::post('/update/student', 'StudentController@update')->name('branch.student.update');
+            Route::post('/delete/student/{id}', 'StudentController@destroy')->name('branch.student.delete');
+            Route::get('/status/student/{id}/{status}', 'StudentController@status')->name('branch.student.status');
         });
 
         // Branch
         Route::group(['namespace' => 'Course'], function () {
             Route::resource('course', 'CourseController');
-            Route::get('/status/{id}/{status}', 'CourseController@status')->name('course.status');
+            Route::get('/branch/list', 'CourseController@branchList')->name('branch.ajax.course_list');
+            Route::get('course/status/{id}/{status}', 'CourseController@status')->name('course.status');
+            Route::get('course/edit/{id}', 'CourseController@editCourse')->name('branch.course.edit');
+            Route::get('course/delete/{id}', 'CourseController@destroyCourse')->name('branch.course.destroy');
+            Route::post('update/course', 'CourseController@updateCourse')->name('branch.course.update');
         });
     });
 });

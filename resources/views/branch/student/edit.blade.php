@@ -8,18 +8,18 @@
     <div class="col-md-12">
       <div class="x_panel">
         <div class="x_title">
-            <h2>Add Student</h2>
+            <h2>Update Student</h2>
             <div class="clearfix"></div>
         </div>
         @include('branch.include.error')
         <div class="x_content">
-            {{ Form::open(['method' => 'post','route'=>'branch.store.student', 'enctype' => 'multipart/form-data']) }}
+            {{ Form::open(['method' => 'post','route'=>'branch.student.update', 'enctype' => 'multipart/form-data']) }}
                 <div class="well" style="overflow: auto">
                     <h2>Basic Details</h2>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="name">Applicant Name</label>
-                            <input type="text" class="form-control" name="name" required value="{{old('name')}}"  placeholder="Enter Applicant Name">
+                            <input type="text" class="form-control" name="name" required value="{{ $student->name }}"  placeholder="Enter Applicant Name">
                                 @if($errors->has('name'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -28,7 +28,7 @@
                         </div>  
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="father_name">Fathers Name</label>
-                           <input type="text" class="form-control" name="father_name" required value="{{old('father_name')}}"  placeholder="Enter Applicant Father Name">
+                           <input type="text" class="form-control" name="father_name" required value="{{ $student->father_name }}"  placeholder="Enter Applicant Father Name">
                                 @if($errors->has('father_name'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('father_name') }}</strong>
@@ -37,7 +37,7 @@
                         </div>                    
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" required value="{{old('email')}}"  placeholder="Enter Email">
+                            <input type="email" class="form-control" name="email" required value="{{ $student->email }}"  placeholder="Enter Email">
                                 @if($errors->has('email'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -48,7 +48,7 @@
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="date">Mobile No</label>
-                            <input type="number" class="form-control" name="mobile" value="{{ old('mobile') }}" placeholder="Enter Mobile No">
+                            <input type="number" class="form-control" name="mobile" value="{{ $student->mobile }}" placeholder="Enter Mobile No">
                                 @if($errors->has('mobile'))
                                     <span class="invalid-feedback" role="alert" >
                                         <strong style="color:red">{{ $errors->first('mobile') }}</strong>
@@ -57,7 +57,7 @@
                         </div>       
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="dob">Date of Birth</label>
-                            <input type="date" class="form-control" name="dob" value="{{ old('dob') }}">
+                            <input type="date" class="form-control" name="dob" value="{{ $student->dob }}">
                                 @if($errors->has('dob'))
                                     <span class="invalid-feedback" role="alert" >
                                         <strong style="color:red">{{ $errors->first('dob') }}</strong>
@@ -68,8 +68,8 @@
                             <label for="gender">Gender</label>
                             <select name="gender" id="gender" class="form-control">
                                 <option value="" selected disabled>--Select Gender--</option>
-                                <option  {{old('gender') == 'Male'?'selected':''}}>Male</option>
-                                <option  {{old('gender') == 'Male'?'selected':''}}>Female</option>
+                                <option  {{ $student->gender == 'Male'?'selected':''}}>Male</option>
+                                <option  {{ $student->gender == 'Female'?'selected':''}}>Female</option>
                             </select>
                             @if($errors->has('gender'))
                                 <span class="invalid-feedback" role="alert" >
@@ -83,10 +83,10 @@
                             <label for="category">Category</label>
                             <select name="category" id="category" class="form-control">
                                 <option value="" selected disabled>--Select Category--</option>
-                                <option  {{old('category') == 'General'?'selected':''}}>General</option>
-                                <option  {{old('category') == 'SC/ST'?'selected':''}}>SC/ST</option>
-                                <option  {{old('category') == 'OBC'?'selected':''}}>OBC</option>
-                                <option  {{old('category') == 'EWS'?'selected':''}}>EWS</option>
+                                <option  {{$student->category == 'General'?'selected':''}}>General</option>
+                                <option  {{$student->category == 'SC/ST'?'selected':''}}>SC/ST</option>
+                                <option  {{$student->category == 'OBC'?'selected':''}}>OBC</option>
+                                <option  {{$student->category == 'EWS'?'selected':''}}>EWS</option>
                             </select>
                             @if($errors->has('category'))
                                 <span class="invalid-feedback" role="alert" >
@@ -105,7 +105,7 @@
                                 <option value="" selected disabled>--Select Course--</option>
                                 @if (isset($courses) && !empty($courses))
                                     @foreach ($courses as $course)
-                                        <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                        <option value="{{ $course->id }}" {{ $student->course_id == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -123,6 +123,9 @@
                                     <strong>{{ $errors->first('photo') }}</strong>
                                 </span>
                             @enderror
+                            <div>
+                                <img src="" alt="">
+                            </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
                             <label for="sign">Signature</label>

@@ -65,9 +65,9 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
-        return view('branch.course.edit', compact('course'));
+        // 
     }
 
     /**
@@ -79,8 +79,6 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        dd(1);
-        dd($course);
         $this->validate($request, [
             'name' => 'required|string'
         ]);
@@ -99,18 +97,78 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy($id)
     {
-        //
+        dd($id);
+    }
+
+    public function branchList(){
+        $query = Course::orderBy('created_at', 'DESC');
+            return datatables()->of($query->get())
+            ->addIndexColumn()
+            ->addColumn('action', function($row){
+                $btn = '<a href="'.route('branch.course.edit', ['id' => encrypt($row->id)]).'" class="btn btn-primary">Edit</a><a href="'.route('branch.course.destroy', ['id' => encrypt($row->id)]).'" class="btn btn-danger">Delete</a>';
+                if($row->status == '1'){
+                    $btn .= '<a href="'.route('course.status', ['id' => encrypt($row->id), 'status'=> 2]).'" class="btn btn-warning">Disable</a>';
+                }else{
+                    $btn .= '<a href="'.route('course.status', ['id' => encrypt($row->id), 'status'=> 1]).'" class="btn btn-success">Enable</a>';
+                }
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     public function status($id, $status){
-        // $course = Course::findOrFail(decrypt($id));
-        // $course->status = $status;
-        // if($course->save()){
-        //     return redirect()->back()->with('message', 'Course updated successfully!');
-        // }else{
-        //     return redirect()->back()->with('error', 'Something went wrong!');
-        // }
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+        $course = Course::findOrFail($id);
+        $course->status = $status;
+        if($course->save()){
+            return redirect()->back()->with('message', 'Course updated successfully!');
+        }else{
+            return redirect()->back()->with('error', 'Something went wrong!');
+        }
+    }
+
+    public function editCourse($id){
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+
+        $course = Course::find($id);
+        return view('branch.course.edit', compact('course'));
+    }
+
+    public function destroyCourse($id){
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+
+        $course = Course::find($id);
+        if($course->delete()){
+            return redirect()->back()->with('message', 'Course deleted successfully');
+        }else {
+            return redirect()->back()->with('error', 'Something went wrong!');
+        }
+    }
+
+    public function updateCourse(Request $request){
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $id = $request->input('id');
+        $course = Course::find($id);
+        $course->name = $request->input('name');
+        if($course->save()){
+            return redirect()->back()->with('message', 'Course updated successfully');
+        }
     }
 }

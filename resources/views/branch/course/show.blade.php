@@ -1,7 +1,5 @@
 @extends('branch.template.branch_master')
-
 @section('content')
-
 <div class="right_col" role="main">
   <div class="row">
 
@@ -23,18 +21,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @forelse ($courses ? $courses : [] as $course)
-                        <tr>
-                            <td>{{ $course->id }}</td>   
-                            <td>{{ $course->name }}</td>   
-                            <td>{!! $course->status == 1 ? '<label class="label label-success">Active</label>' : '<label class="label label-danger">Deactive</label>' !!}</td>   
-                            <td><a href="{{ route('course.edit', compact('course')) }}" class="btn btn-primary">Edit</a></td>
-                        </tr>                       
-                    @empty
-                        <tr>
-                            <td colspan="4" class="text-center">No data found</td>
-                        </tr>
-                    @endforelse
+                   
                 </tbody>
             </table>
         </div>
@@ -42,4 +29,29 @@
     </div>
   </div>
 </div>
+@endsection
+@section('script')
+ <script type="text/javascript">
+     $(function () {
+        var i = 1;
+        var table = $('#course_list').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('branch.ajax.course_list') }}",
+            columns: [
+                { "render": function(data, type, full, meta) {return i++;}},
+                {data: 'name', name: 'name',searchable: true},
+                {data: 'status', name: 'status', render:function(data, type, row){
+                  if (row.status == '1') {
+                    return "<button class='btn btn-success rounded'>Active</a>"
+                  }else{
+                    return "<button class='btn btn-warning rounded'>Inactive</a>"
+                  }                        
+                }},    
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+            ]
+        });
+        
+    });
+ </script>
 @endsection
