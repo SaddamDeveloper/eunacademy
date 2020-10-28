@@ -1,4 +1,4 @@
-@extends('admin.template.admin_master')
+@extends('branch.template.branch_master')
 
 @section('content')
 

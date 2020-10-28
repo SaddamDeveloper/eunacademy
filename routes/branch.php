@@ -21,8 +21,8 @@ Route::group(['namespace' => 'Branch'],function(){
             Route::get('/list/student', 'StudentController@list')->name('branch.list.student');
             Route::get('/view/student/{id}', 'StudentController@view')->name('branch.student.view');
             Route::get('/edit/student/{id}', 'StudentController@edit')->name('branch.student.edit');
-            Route::post('/update/student', 'StudentController@update')->name('branch.student.update');
-            Route::post('/delete/student/{id}', 'StudentController@destroy')->name('branch.student.delete');
+            Route::put('/update/student/{id}', 'StudentController@update')->name('branch.student.update');
+            Route::get('/delete/student/{id}', 'StudentController@destroy')->name('branch.student.delete');
             Route::get('/status/student/{id}/{status}', 'StudentController@status')->name('branch.student.status');
         });
 
