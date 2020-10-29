@@ -14,8 +14,8 @@
                 <div class="well" style="overflow: auto">
                     <div class="form-row mb-10">
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" value="{{old('name')}}"  placeholder="Enter Gallery Name">
+                            <label for="name">Caption</label>
+                            <input type="text" class="form-control" name="name" value="{{old('name')}}"  placeholder="Enter Caption">
                                 @if($errors->has('name'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -23,7 +23,7 @@
                                 @enderror
                         </div>                     
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <label for="photo">Gallery</label>
+                            <label for="photo">Photo</label>
                             <input type="file" class="form-control" name="photo" value="{{old('photo')}}"  placeholder="Enter photo">
                                 @if($errors->has('photo'))
                                     <span class="invalid-feedback" role="alert" style="color:red">

@@ -91,14 +91,13 @@
                       <li><a href="{{route('admin.list.branch')}}">Branch List</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-users"></i> Gallery <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-picture-o"></i> Gallery <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('admin.add.gallery')}}">Add Photo</a></li>
                       <li><a href="{{route('admin.show.gallery')}}">Photo List</a></li>
                     </ul>
                   </li>
                   <li><a href="{{route('admin.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
-
                 </ul>
               </div>
 

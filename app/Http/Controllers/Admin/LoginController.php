@@ -17,7 +17,8 @@ class LoginController extends Controller
         return view('admin.index');
     }
 
-    public function adminLogin(Request $request){
+    public function adminLogin(Request $request)
+    {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
@@ -27,7 +28,7 @@ class LoginController extends Controller
 
             return redirect()->intended('/admin/dashboard');
         }
-        return back()->withInput($request->only('email', 'remember'))->with('login_error','Username or password incorrect');
+        return back()->withInput($request->only('email', 'remember'))->with('login_error', 'Username or password incorrect');
     }
 
     public function logout()
@@ -49,21 +50,20 @@ class LoginController extends Controller
             'confirm_password' => ['required', 'string', 'min:6', 'same:new_password'],
         ]);
 
-        $current_password = Auth::guard('admin')->user()->password;   
+        $current_password = Auth::guard('admin')->user()->password;
 
-        if(Hash::check($request->input('current_password'), $current_password)){           
-            $user_id = Auth::guard('admin')->user()->id; 
+        if (Hash::check($request->input('current_password'), $current_password)) {
+            $user_id = Auth::guard('admin')->user()->id;
             $password_change = DB::table('admin')
-            ->where('id',$user_id)
-            ->update([
-                'password' => Hash::make($request->input('confirm_password')),
-                'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString(),
-            ]);
+                ->where('id', $user_id)
+                ->update([
+                    'password' => Hash::make($request->input('confirm_password')),
+                    'updated_at' => Carbon::now()->setTimezone('Asia/Kolkata')->toDateTimeString(),
+                ]);
 
-            return redirect()->back()->with('message','Your Password Changed Successfully');
-            
-        }else{           
-            return redirect()->back()->with('error','Sorry Current Password Does Not matched');
-       }
+            return redirect()->back()->with('message', 'Your Password Changed Successfully');
+        } else {
+            return redirect()->back()->with('error', 'Sorry Current Password Does Not matched');
+        }
     }
 }

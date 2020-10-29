@@ -22,6 +22,7 @@
                         <th>Registration No</th>
                         <th>Name</th>
                         <th>Father's Name</th>
+                        <th>Course</th>
                         <th>Email</th>
                         <th>Mobile</th>
                     </tr>
@@ -36,14 +37,20 @@
                             <td>{{ $st->registraion_no }}</td>
                             <td>{{ $st->name }}</td>
                             <td>{{ $st->father_name }}</td>
+                            <td>{{ $st->courses->name }}</td>
                             <td>{{ $st->email }}</td>
                             <td>{{ $st->mobile }}</td>
                         </tr>                      
                     @empty
-                        <tr colspan="7" class="text-center">No Student Registered Yet!</tr>
+                        <tr>
+                            <td  colspan="7" class="text-center">
+                                No Student Registered Yet!
+                            </td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>
+            {{ $student->links() }}
         </div>
     </div>
 </div>

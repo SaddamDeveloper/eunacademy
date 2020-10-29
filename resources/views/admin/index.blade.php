@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>EUN Academy</title>
+    <title>{{ config('app.name') }}</title>
     {{-- <link rel="icon" href="{{ asset('/logo/logo.png')}}" type="image/icon type"> --}}
 
     <!-- Bootstrap -->
