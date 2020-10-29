@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Branch;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -47,7 +48,9 @@ class BranchesController extends Controller
         return datatables()->of(Branch::orderBy('created_at', 'DESC')->get())
         ->addIndexColumn()
         ->addColumn('action', function($row){
-            $action = '<a href="'.route('admin.edit.branch', ['id' => encrypt($row->id)]).'" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+            $action = '
+            <a href="'.route('admin.show.student', ['id' => encrypt($row->id)]).'" class="btn btn-primary"><i class="fa fa-users"></i></a>
+            <a href="'.route('admin.edit.branch', ['id' => encrypt($row->id)]).'" class="btn btn-primary"><i class="fa fa-edit"></i></a>
             <a href="'.route('admin.change.password', ['id' => encrypt($row->id)]).'" class="btn btn-warning"><i class="fa fa-lock"></i></a>';
             if($row->status == '1'){
                 $action .= '<a href="'.route('admin.status.branch', ['id' => encrypt($row->id), 'status'=> 
@@ -110,6 +113,19 @@ class BranchesController extends Controller
         }else {
             return redirect()->back()->with('error', 'Something went wrong!');
         }
+    }
+
+    public function showList($id){
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+        $student = Student::where('branch_id', $id)->get();
+        return view('admin.branch.student_list', compact('student'));
+    }
+    public function listStudent($id){
+        dd(1);
     }
 
     public function changePassword($id){

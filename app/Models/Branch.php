@@ -19,4 +19,9 @@ class Branch extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function student()
+    {
+        return $this->hasMany('App\Models\Student');
+    }
 }

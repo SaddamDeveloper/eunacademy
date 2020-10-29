@@ -33,4 +33,9 @@ class Student extends Model
     public function qualifications(){
         return $this->hasMany('App\Models\Qualification', 'student_id', 'id');
     }
+
+    public function branches()
+    {
+        return $this->belongsTo('App\Models\Branch', 'branch_id', 'id');
+    }
 }
