@@ -1,0 +1,58 @@
+/* Custom Css */
+.line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    padding-bottom: 0!important;
+}  
+.full-op a {
+    font-size: 80%;
+    color: #f16001;
+    padding-left: 7px;
+}
+.image-block img, .sign img{
+    border: 3px solid #001e92;
+}
+.gallery{
+    padding-bottom: 0!important;
+}
+.gallery .col-md-3{
+    padding-bottom: 30px;
+}
+.gallery .col-md-3 img {
+    border-radius: 10px;
+    box-shadow: 4px 3px 7px #807e7e;
+}
+.gallery .col-md-3 a:hover img {
+    opacity: .7;
+}
+/* Responsive ( px ) */
+
+
+/* Responsive ( px ) */
+@media (min-width: 1200px) {
+    .banner-1.has-overlay::after {
+        width: 50%;
+    }
+    .about-index {
+        margin-top: -100px; 
+    }
+    .light-bg-text {
+        position: absolute;
+        font-size: 190px;
+        color: #f5f5f5;
+        top: -32px;
+        display: block!important;
+    }
+    .course-item .h2 {
+        line-height: 0.8;
+        font-size: 42px;
+    }
+    .counter-section {
+        border-radius: 20px 0 0 120px;
+    }
+    .image-block .col-md-5{
+        margin-right: 5px;
+    }
+}
