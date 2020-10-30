@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\Course;
 use App\Models\Student;
-use DB;
 
 class DashboardController extends Controller
 {
