@@ -91,12 +91,6 @@
                       <li><a href="{{route('branch.show.student')}}">Student List</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-users"></i> Course <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{route('course.create')}}">Add Course</a></li>
-                      <li><a href="{{route('course.index')}}">Course List</a></li>
-                    </ul>
-                  </li>
                   <li><a href="{{route('branch.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
 
                 </ul>

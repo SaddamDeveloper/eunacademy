@@ -91,11 +91,23 @@
                       <li><a href="{{route('admin.list.branch')}}">Branch List</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-users"></i> Course <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('course.create')}}">Add Course</a></li>
+                      <li><a href="{{route('course.index')}}">Course List</a></li>
+                    </ul>
+                  </li>
                   <li><a><i class="fa fa-picture-o"></i> Gallery <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('admin.add.gallery')}}">Add Photo</a></li>
                       <li><a href="{{route('admin.show.gallery')}}">Photo List</a></li>
                     </ul>
+                  </li>
+                  <li>
+                      <a href="{{ route('admin.contact') }}"><i class="fa fa-envelope" aria-hidden="true"></i></i> Contact </a>
+                  </li>
+                  <li>
+                      <a href="{{ route('book.class') }}"><i class="fa fa-book" aria-hidden="true"></i></i> Book Class </a>
                   </li>
                   <li><a href="{{route('admin.change_password_form')}}"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
                 </ul>

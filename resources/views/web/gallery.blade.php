@@ -28,18 +28,18 @@
             <div class="container">
                 <div class="p-30 mb-35 bg-grey shadow rounded gallery">
                     <div class="row">
-                        <div class="col-md-3">
-                        <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-3.jpg" data-lightbox="example-set"><img class="example-image img-fluid" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-3.jpg" alt=""/></a>
-                        </div>
-                        <div class="col-md-3">
-                        <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-4.jpg" data-lightbox="example-set"><img class="example-image img-fluid" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-4.jpg" alt="" /></a>
-                        </div>
-                        <div class="col-md-3">
-                            <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-5.jpg" data-lightbox="example-set"><img class="example-image img-fluid" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-3.jpg" alt="" /></a>
-                        </div>
-                        <div class="col-md-3">
-                        <a class="example-image-link" href="http://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg" data-lightbox="example-set"><img class="example-image img-fluid" src="http://lokeshdhakar.com/projects/lightbox2/images/thumb-4.jpg" alt="" /></a>
-                        </div>
+                        @forelse ($galleries ?:[] as $gallery)
+                            <div class="col-md-3">
+                                <a class="example-image-link" href="{{ asset('admin/gallery/'.$gallery->photo) }}" data-lightbox="example-set"><img class="example-image img-fluid" src="{{ asset('admin/gallery/'.$gallery->photo) }}" alt=""/></a>
+                            </div>
+                            @empty
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <h3>No Gallery Yet!</h3>
+                                </div>
+                            </div>
+                        @endforelse
+                        {{ $galleries->links() }}
                     </div>
                 </div>
             </div>

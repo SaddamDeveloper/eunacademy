@@ -64,18 +64,18 @@
  </a>
  
  <!-- jQuery -->
- <script src="assets/vendors/jQuery/jquery.min.js"></script>
- <script src="assets/vendors/bootstrap/bootstrap.min.js"></script>
- <script src="assets/vendors/jquery-nice-select/jquery.nice-select.min.js"></script>
- <script src="assets/vendors/OwlCarousel2/owl.carousel.min.js"></script>
- <script src="assets/vendors/counterup/waypoints.min.js"></script>
- <script src="assets/vendors/counterup/jquery.counterup.min.js"></script>
- <script src="assets/vendors/magnific-popup/js/magnific-popup.min.js"></script>
+ <script src="{{ asset('assets/vendors/jQuery/jquery.min.js')}}"></script>
+ <script src="{{ asset('assets/vendors/bootstrap/bootstrap.min.js')}}"></script>
+ <script src="{{ asset('assets/vendors/jquery-nice-select/jquery.nice-select.min.js')}}"></script>
+ <script src="{{ asset('assets/vendors/OwlCarousel2/owl.carousel.min.js')}}"></script>
+ <script src="{{ asset('assets/vendors/counterup/waypoints.min.js')}}"></script>
+ <script src="{{ asset('assets/vendors/counterup/jquery.counterup.min.js')}}"></script>
+ <script src="{{ asset('assets/vendors/magnific-popup/js/magnific-popup.min.js')}}"></script>
  
  <!-- Main Script -->
- <script src="assets/js/script.js"></script>
- <script src="assets/js/lightbox-plus-jquery.min.js"></script>
- 
+ <script src="{{ asset('assets/js/script.js') }}"></script>
+ <script src="{{ asset('assets/js/lightbox-plus-jquery.min.js') }}"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  </body>
  
  </html>

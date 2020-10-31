@@ -32,30 +32,56 @@
                         <h2 class="text-secondary font-weight-bold mb-2">Send a Message</h2>
                         <p>Your email address will not be published. <br> Required fields are marked.</p>
                     </div>
-                    <form action="#">
+                    @if (Session::has('message'))
+                        <div class="alert alert-success" >{{ Session::get('message') }}</div>
+                    @endif
+                    @if (Session::has('error'))
+                        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+                    @endif
+                    {{ Form::open(['method' => 'post','route'=>'web.store.contact']) }}
                         <div class="row">
                         <div class="col-md-6">
                             <div class="mb-30">
                                 <label for="name">Name*</label>
-                                <input type="text" class="form-control rounded-sm" id="name" placeholder="Jack Barker">
+                                <input type="text" class="form-control rounded-sm" name="name" value="{{ old('name') }}" id="name" placeholder="Jack Barker">
+                                @if($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-30">
                                 <label for="email">Email*</label>
-                                <input type="email" class="form-control rounded-sm" id="email" placeholder="jack@email.com">
+                                <input type="email" class="form-control rounded-sm" name="email" value="{{ old('email') }}" id="email" placeholder="jack@email.com">
+                                @if($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-30">
                                 <label for="sub">Subject</label>
-                                <input type="text" class="form-control rounded-sm" id="sub" placeholder="I want to know about course.">
+                                <input type="text" class="form-control rounded-sm" id="subject" name="subject" value="{{ old('subject') }}" placeholder="I want to know about course.">
+                                @if($errors->has('subject'))
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $errors->first('subject') }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-30">
                                 <label for="message">Message</label>
-                                <textarea class="form-control rounded-sm" id="message" rows="5"></textarea>
+                                <textarea class="form-control rounded-sm" id="message" name="message" rows="5">{{ old('message') }}</textarea>
+                                @if($errors->has('message'))
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">

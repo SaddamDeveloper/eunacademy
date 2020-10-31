@@ -50,31 +50,38 @@
                 </div>
             </div>      
             <div class="owl-carousel tutors-carousel-alt has-dots-center">
-                <div class="tutor-item-alt">
-                    <div class="card shadow-sm mt-40">
-                        <div class="card-body p-20">
-                        <div class="d-flex justify-content-between align-items-end">
-                            <div class="media d-block">
-                                <div class="mt-3">
-                                    <h4 class="font-weight-600 text-blue mb-1">Business Computer Application </h4>
-                                    <p>(BCA)</p>
+                @forelse ($courses ?: [] as $course)
+                    <div class="tutor-item-alt">
+                        <div class="card shadow-sm mt-40">
+                            <div class="card-body p-20">
+                            <div class="d-flex justify-content-between align-items-end">
+                                <div class="media d-block">
+                                    <div class="mt-3">
+                                        <h4 class="font-weight-600 text-blue mb-1">{{ $course->name }}</h4>
+                                    </div>
+                                </div>
+                                <div class="text-primary text-center course-item">
+                                    @php
+                                        $str = explode(" ", $course->duration);
+                                    @endphp
+                                    <span class="h2 d-block font-weight-bold line-hight-1">{{ $str[0] }}</span>
+                                    <span class="h4">{{ $str[1] }}</span>
                                 </div>
                             </div>
-                            <div class="text-primary text-center course-item">
-                                <span class="h2 d-block font-weight-bold line-hight-1">3</span>
-                                <span class="h4">months</span>
+                            <ul class="list-inline my-4 pt-3 pb-4 border-top border-bottom">
+                                <li class="list-inline-item line-clamp-4 p-2 bg-gray rounded mt-2" id="course1">{{ Str::words($course->description, 20, '...') }}</li>
+                                <li class="full-op"><a  href="#!" data-target-id="{{ $course->id }}" data-title="{{ $course->name }}" data-description="{{ $course->description }}"  data-toggle="modal" data-target="#modal">see more</a></li>
+                            </ul>
+                            <a href="#!" data-target-id="{{ $course->id }}" data-title="{{ $course->name }}" data-description="{{ $course->description }}" data-toggle="modal" data-target="#modal" class="btn btn-outline-primary rounded-pill">Book Class</a>
                             </div>
                         </div>
-                        <ul class="list-inline my-4 pt-3 pb-4 border-top border-bottom">
-                            <li class="list-inline-item line-clamp-4 p-2 bg-gray rounded mt-2" id="course1">Computer Fundamentals of Software & Hardware MS-DOS, Handling Windows, MS Office, Internet Browsing, Downloading & E-mail Handling.</li>
-                            <li class="full-op"><a  href="#!"  data-toggle="modal" data-target="#signup-modal1">see more</a></li>
-                        </ul>
-        
-                        <a href="#!" class="btn btn-outline-primary rounded-pill">Book Class</a>
-                        </div>
                     </div>
-                </div>
-                <div class="tutor-item-alt">
+                @empty
+                    <div class="tutor-item-alt text-center">
+                        No Course Yet!
+                    </div>
+                @endforelse
+                {{-- <div class="tutor-item-alt">
                     <div class="card shadow-sm mt-40">
                         <div class="card-body p-20">
                         <div class="d-flex justify-content-between align-items-end">
@@ -145,7 +152,7 @@
                         <a href="#!" class="btn btn-outline-primary rounded-pill">Book Class</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             </div>
         </section>
@@ -234,5 +241,60 @@
     @endsection
 
     @section('script') 
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="modal"]').on('click', function (e) {
+                var $target = $(e.target);
+                var id = $target.data('target-id');
+                var title = $target.data('title');
+                var description = $target.data('description');
+                var header = $("#header").html(`<h4 class="modal-title text-secondary font-weight-600">${title}<br><small>3 months</small></h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>`);
+                
+                var body = $('#description').html(description);
 
+                $('#form-submit').on('submit', function(e){
+                e.preventDefault();
+                var data = $(this).serializeArray();
+                data.push({name: 'course_id', value: id});
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{route('web.ajax.contact')}}",
+                    method: "POST",
+                    data: data,
+                    success: function(response){
+                        var html = '';
+                        if(response.errors)
+                        {
+                            html = '<div class="alert alert-danger">';
+                            for(var count = 0; count < response.errors.length; count++){
+                                html += '<p>' + response.errors[count] + '</p>';
+                            }
+                            html += '</div>';
+                        }
+                        if(response.success){
+                            $('#form-submit')[0].reset();
+                            $("#modal .close").click();
+                            Swal.fire(
+                                'Thank You!',
+                                'We are contacting soon!',
+                                'success'
+                            )
+                        }
+                        if(response.error){
+                            html = '<div class="alert alert-danger">' + response.error + '</div>';
+                        }
+                        $("#alert").html(html);
+                    }
+                });
+            });
+            });
+        });
+     </script>
     @endsection

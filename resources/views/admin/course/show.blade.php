@@ -1,4 +1,4 @@
-@extends('branch.template.branch_master')
+@extends('admin.template.admin_master')
 @section('content')
 <div class="right_col" role="main">
   <div class="row">
@@ -16,6 +16,8 @@
                   <tr>
                       <th>#</th>
                       <th>Name</th>
+                      <th>Duration</th>
+                      <th>Description</th>
                       <th>Status</th>
                       <th>Action</th>
                   </tr>
@@ -41,6 +43,8 @@
             columns: [
                 { "render": function(data, type, full, meta) {return i++;}},
                 {data: 'name', name: 'name',searchable: true},
+                {data: 'duration', name: 'duration',searchable: true},
+                {data: 'description', name: 'description',searchable: true},
                 {data: 'status', name: 'status', render:function(data, type, row){
                   if (row.status == '1') {
                     return "<button class='btn btn-success rounded'>Active</a>"

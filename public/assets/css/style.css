@@ -3065,7 +3065,9 @@ form.navbar-form.search-only .form-control::placeholder {
   transition: .5s;
   width: 100% !important;
 }
-
+.invalid-feedback{
+  display: block;
+}
 .instructors-item .instructor-social {
   position: absolute;
   width: 100%;

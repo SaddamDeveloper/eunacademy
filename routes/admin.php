@@ -37,5 +37,28 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('/delete/gallery/{id}', 'GalleryController@destroy')->name('admin.destroy.gallery');
             Route::get('/status/gallery/{id}/{status}', 'GalleryController@status')->name('admin.status.gallery');
         });
+        // Conatct
+        Route::group(['namespace' => 'Contact'], function() {
+            Route::get('/contact', 'ContactController@index')->name('admin.contact');
+            Route::get('/show/in/touch', 'ContactController@show')->name('admin.ajax.show_contact');
+            Route::get('/delete/contact/{id}', 'ContactController@destroyContact')->name('admin.delete_contact');
+            Route::get('/subject/{id}', 'ContactController@subject')->name('admin.subject');
+        });
+        
+         // Course
+         Route::group(['namespace' => 'Course'], function () {
+            Route::resource('course', 'CourseController');
+            Route::get('/branch/list', 'CourseController@branchList')->name('branch.ajax.course_list');
+            Route::get('course/status/{id}/{status}', 'CourseController@status')->name('course.status');
+            Route::get('course/edit/{id}', 'CourseController@editCourse')->name('branch.course.edit');
+            Route::get('course/delete/{id}', 'CourseController@destroyCourse')->name('branch.course.destroy');
+            Route::post('update/course', 'CourseController@updateCourse')->name('branch.course.update');
+        });
+         // Book Class List
+         Route::group(['namespace' => 'Book'], function () {
+            Route::get('/book/class/', 'BookClassController@index')->name('book.class');
+            Route::get('/book/class/list', 'BookClassController@list')->name('book.ajax.book_list');
+            Route::get('book/delete/{id}', 'BookClassController@destroyCourse')->name('book.class.destroy');
+        });
     });
 });

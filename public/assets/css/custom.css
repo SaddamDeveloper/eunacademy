@@ -11,7 +11,7 @@
     color: #f16001;
     padding-left: 7px;
 }
-.image-block img, .sign img{
+.image-block img, .sign img, .image-block svg{
     border: 3px solid #001e92;
 }
 .gallery{
