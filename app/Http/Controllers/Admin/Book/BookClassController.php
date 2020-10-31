@@ -27,4 +27,18 @@ class BookClassController extends Controller
         ->rawColumns(['action', 'course'])
         ->make(true);
     }
+
+    public function destroy($id){
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+        $bookclass = Bookclass::find($id);
+        if($bookclass->delete()){
+            return redirect()->back()->with('message', 'Deleted Successfully!');
+        }else {
+            return redirect()->back()->with('error', 'Something went wrong!');
+        }
+    }
 }

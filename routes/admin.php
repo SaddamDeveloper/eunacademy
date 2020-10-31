@@ -58,7 +58,7 @@ Route::group(['namespace' => 'Admin'], function () {
          Route::group(['namespace' => 'Book'], function () {
             Route::get('/book/class/', 'BookClassController@index')->name('book.class');
             Route::get('/book/class/list', 'BookClassController@list')->name('book.ajax.book_list');
-            Route::get('book/delete/{id}', 'BookClassController@destroyCourse')->name('book.class.destroy');
+            Route::get('book/delete/{id}', 'BookClassController@destroy')->name('book.class.destroy');
         });
     });
 });
