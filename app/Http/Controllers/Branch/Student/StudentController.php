@@ -9,6 +9,7 @@ use App\Models\Qualification;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -83,6 +84,7 @@ class StudentController extends Controller
                 $student->end_date = $request->input('end_date');
                 $student->photo = $photo_name;
                 $student->sign = $image_name;
+                $student->branch_id = Auth::guard('branch')->user()->id;
                 $student->save();
 
                 $address1 = new Address();
@@ -280,6 +282,7 @@ class StudentController extends Controller
                 $student->mobile = $request->input('mobile');
                 $student->category = $request->input('category');
                 $student->course = $request->input('course');
+                $student->branch_id = Auth::guard('branch')->user()->id;
                 $student->save();
 
                 $address1 = $student->present_address_id == null ? new Address() : Address::find($student->present_address_id);
