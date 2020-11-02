@@ -232,11 +232,21 @@
                     <div class="form-row mb-3 input_fields_wrap">
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
                             <label for="start_date">Start Date</label>
-                            <input type="date" name="start_date" id="start_date" class="form-control">
+                            <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}" class="form-control">
+                            @if($errors->has('start_date'))
+                                <span class="invalid-feedback" role="alert" >
+                                    <strong style="color:red">{{ $errors->first('start_date') }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
                             <label for="end_date">End Date</label>
-                            <input type="date" name="end_date" id="end_date" class="form-control">
+                            <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}" class="form-control">
+                            @if($errors->has('end_date'))
+                                <span class="invalid-feedback" role="alert" >
+                                    <strong style="color:red">{{ $errors->first('end_date') }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>

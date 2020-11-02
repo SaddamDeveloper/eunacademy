@@ -85,6 +85,8 @@ class StudentController extends Controller
                 $student->photo = $photo_name;
                 $student->sign = $image_name;
                 $student->branch_id = Auth::guard('branch')->user()->id;
+                $student->start_date = $request->input('start_date');
+                $student->end_date = $request->input('end_date');
                 $student->save();
 
                 $address1 = new Address();
@@ -199,6 +201,8 @@ class StudentController extends Controller
             'pin' =>  'required|numeric',
             'present_address' => 'required',
             'exam_passed.*' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required'
         ]);
         if ($request->hasfile('photo')) {
             $this->validate($request, [
@@ -283,6 +287,8 @@ class StudentController extends Controller
                 $student->category = $request->input('category');
                 $student->course = $request->input('course');
                 $student->branch_id = Auth::guard('branch')->user()->id;
+                $student->start_date = $request->input('start_date');
+                $student->end_date = $request->input('end_date');
                 $student->save();
 
                 $address1 = $student->present_address_id == null ? new Address() : Address::find($student->present_address_id);

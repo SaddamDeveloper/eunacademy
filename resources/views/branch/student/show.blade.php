@@ -38,12 +38,13 @@
 @section('script')
 <script>
     $(function(){
+        var i = 1;
         var table = $('#student_list').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('branch.list.student') }}",
             columns: [
-                {data: 'id', name: 'id',searchable: true},
+                { "render": function(data, type, full, meta) {return i++;}},
                 {data: 'registraion_no', name: 'registraion_no',searchable: true},      
                 {data: 'name', name: 'name',searchable: true},      
                 {data: 'father_name', name: 'father_name',searchable: true},      

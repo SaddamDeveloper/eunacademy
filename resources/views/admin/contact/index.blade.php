@@ -37,12 +37,13 @@
 @section('script')
 <script>
     $(function(){
+        var i = 1;
         var table = $('#contact_list').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('admin.ajax.show_contact') }}",
             columns: [
-                {data: 'id', name: 'id',searchable: true},
+                { "render": function(data, type, full, meta) {return i++;}},
                 {data: 'name', name: 'name',searchable: true},      
                 {data: 'email', name: 'email',searchable: true},               
                 {data: 'subject', name: 'subject',searchable: true},         
