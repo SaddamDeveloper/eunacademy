@@ -18,8 +18,13 @@
                     <h2>Basic Details</h2>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="name">Regitration No</label>
-                            <input type="text" class="form-control" required value="{{ $student->registraion_no }}" disabled>
+                            <label for="regd_no">Regitration No</label>
+                            <input type="text" class="form-control" name="regd_no" required value="{{ $student->registraion_no }}" placeholder="Enter Registration No"> 
+                            @if($errors->has('regd_no'))
+                                <span class="invalid-feedback" role="alert" style="color:red">
+                                    <strong>{{ $errors->first('regd_no') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-row mb-10">

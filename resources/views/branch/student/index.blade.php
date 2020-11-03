@@ -18,6 +18,15 @@
                     <h2>Basic Details</h2>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
+                            <label for="name">Registration No</label>
+                            <input type="text" class="form-control" name="regd_no" required value="{{old('regd_no')}}"  placeholder="Enter Registration No">
+                                @if($errors->has('regd_no'))
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $errors->first('regd_no') }}</strong>
+                                    </span>
+                                @endif
+                        </div>  
+                        <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                             <label for="name">Applicant Name</label>
                             <input type="text" class="form-control" name="name" required value="{{old('name')}}"  placeholder="Enter Applicant Name">
                                 @if($errors->has('name'))

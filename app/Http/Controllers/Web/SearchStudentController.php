@@ -25,7 +25,7 @@ class SearchStudentController extends Controller
             $data = "Registration No: $student->registraion_no\nName : $student->name\nFather: $student->father_name\nCourse : $course\nMobile: $student->mobile";
             $qr_code = QrCode::generate($data);
             $html = '<div class="p-30 mb-35 bg-light shadow rounded row">
-            <div class="col-lg-9 mt-5 mt-lg-0">
+            <div class="col-lg-9 col-sm-9 mt-5 mt-lg-0">
             <h4>Student Profile</h4>
             <div class="border-top mt-20">
                 <div class="row">
@@ -88,13 +88,13 @@ class SearchStudentController extends Controller
                 </div>
             </div>
             </div>
-            <div class="col-lg-3 mt-5 mt-lg-0">
+            <div class="col-lg-3 col-sm-3 mt-5 mt-lg-0">
             <div class="image-block">
                 <div class="row">
-                    <div class="col-md-5 col-6 offset-1 p-0">
+                    <div class="col-md-5 col-sm-5 col-6 offset-1 p-0">
                         <img class="img-fluid" src="'.asset('branch/student/'. $student->photo).'" alt="">
                     </div>
-                    <div class="col-md-5 col-6 p-0">
+                    <div class="col-md-5 col-sm-5 col-6 p-0">
                         <div class="img-fluid">'.$qr_code.'</div>
                     </div>
                 </div>

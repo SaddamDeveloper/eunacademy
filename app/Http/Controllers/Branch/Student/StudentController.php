@@ -26,6 +26,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'regd_no' => 'required',
             'name' => 'required|string',
             'father_name' =>  'required|string',
             'email' =>  'required|email|unique:branches',
@@ -39,7 +40,6 @@ class StudentController extends Controller
             'city' =>  'required|string',
             'state' =>  'required|string',
             'pin' =>  'required|numeric',
-            'present_address' => 'required',
             'exam_passed.*' => 'required',
         ]);
 
@@ -72,6 +72,7 @@ class StudentController extends Controller
         try {
             DB::transaction(function () use ($request, $photo_name, $image_name) {
                 $student = new Student();
+                $student->registraion_no = $request->input('regd_no');
                 $student->name = $request->input('name');
                 $student->father_name = $request->input('father_name');
                 $student->dob = $request->input('dob');
@@ -107,8 +108,8 @@ class StudentController extends Controller
 
                 $student->present_address_id = $address1->id;
                 $student->permanent_address_id = $address2->id;
-                $registraion_no = $this->generateRegistrationNo($student->id);
-                $student->registraion_no = $registraion_no;
+                // $registraion_no = $this->generateRegistrationNo($student->id);
+                // $student->registraion_no = $registraion_no;
                 $student->save();
 
                 $data = [];
@@ -188,6 +189,7 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'regd_no' => 'required',
             'name' => 'required|string',
             'father_name' =>  'required|string',
             'email' =>  'required|email|unique:branches,email,' . $id,
@@ -199,7 +201,6 @@ class StudentController extends Controller
             'city' =>  'required|string',
             'state' =>  'required|string',
             'pin' =>  'required|numeric',
-            'present_address' => 'required',
             'exam_passed.*' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
@@ -278,6 +279,7 @@ class StudentController extends Controller
         try {
             DB::transaction(function () use ($request, $id) {
                 $student = Student::find($id);
+                $student->registraion_no = $request->input('regd_no');
                 $student->name = $request->input('name');
                 $student->father_name = $request->input('father_name');
                 $student->dob = $request->input('dob');
