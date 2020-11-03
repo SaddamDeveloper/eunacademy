@@ -1,5 +1,5 @@
 <footer>
-    <div class="container">
+    <div class="container hidden-print">
        <div class="row">
           <div class="col-md-12">
              <div class="py-5 px-3 px-sm-5 bg-light">
@@ -44,7 +44,7 @@
           </div>
        </div>
     </div>
-    <div class="footer-bottom py-3 border-top">
+    <div class="footer-bottom py-3 border-top hidden-print">
        <div class="container">
           <div class="row align-items-center">
              <div class="col-lg-9 text-center text-lg-left mb-3 mb-lg-0">
@@ -59,7 +59,7 @@
        </div>
     </div>
  </footer>
- <a href="#top" class="scroll-to-top">
+ <a href="#top" class="scroll-to-top hidden-print">
     <span class="fas fa-chevron-up"></span>
  </a>
  

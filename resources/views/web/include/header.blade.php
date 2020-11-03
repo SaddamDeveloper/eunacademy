@@ -22,6 +22,7 @@
   
   <!--Favicon-->
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
+  @stack('css')
 </head>
 
 <body id="top">

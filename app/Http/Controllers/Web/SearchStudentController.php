@@ -103,8 +103,9 @@ class SearchStudentController extends Controller
                 <img class="img-fluid" src="'.asset('branch/student/'. $student->sign).'" alt="">
             </div>
             </div>
-            </div>';
-            echo $html;
+            </div>
+            <button id="print" class="btn btn-primary pull-right hidden-print">Print</button>';
+            return $html;
         }else{
             return 1;
         }

@@ -2,11 +2,23 @@
 
     @section('seo')
     @endsection
-
+    @push('css')
+        <style>
+            @media print {
+                .hidden-print {
+                    display: none !important;
+                }
+                .sign {
+                    width: 140px;
+                    margin-left: 60px;
+                }
+            }
+        </style>
+    @endpush
     @section('content')
     
         <!-- start of page-header -->
-        <section class="page-header bg-cover has-overlay" style="background-image: url(assets/images/page-header-02.jpg)">
+        <section class="page-header bg-cover has-overlay hidden-print" style="background-image: url(assets/images/page-header-02.jpg)">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -28,7 +40,7 @@
         <section class="section-padding bg-white">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="p-30 mb-35 bg-light shadow rounded row">
+                    <div class="p-30 mb-35 bg-light shadow rounded row hidden-print">
                         <div class="col-lg-12 mt-5 mt-lg-0">
                             <h4>Search Student Profile</h4>
                             <div class="border-top mt-20">
@@ -94,6 +106,9 @@
                        }
                    });
                });
+               $(document).on('click', '#print', function(){
+                    window.print(); 
+               }); 
             });
         </script>
     @endsection
