@@ -127,7 +127,7 @@
                             @enderror
                         </div> 
                         <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                            <label for="photo">Photo</label>
+                            <label for="photo">Photo(Maximum 250 Kb is allowed)</label>
                             <input type="file" class="form-control" name="photo">
                             @if($errors->has('photo'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
@@ -139,7 +139,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                            <label for="sign">Signature</label>
+                            <label for="sign">Signature(Maximum 250 Kb is Allowed)</label>
                             <input type="file" class="form-control" name="sign">
                             @if($errors->has('sign'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
