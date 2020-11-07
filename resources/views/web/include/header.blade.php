@@ -78,9 +78,13 @@
          <div class="collapse navbar-collapse" id="navbarNavAlt">
             <ul class="navbar-nav mt-4 mt-xl-0 ml-auto">
                <li class="nav-item"> <a class="nav-link" href="{{route('web.index')}}"> Home </a><li>
-               <li class="nav-item dropdown"> <a class="nav-link"  href="about.php"> About</a></li>
+               <li class="nav-item dropdown"> <a class="nav-link"  href="{{route('web.about')}}"> About</a></li>
                <li class="nav-item">
+                  @if (\Request::path() == '/')                      
                   <a class="nav-link" href="#course">Courses</a>
+                  @else                      
+                  <a class="nav-link" href="{{route('web.index')}}#course">Courses</a>
+                  @endif
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="{{route('web.gallery')}}">Gallery</a>

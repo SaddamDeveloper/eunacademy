@@ -10,7 +10,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-6 col-sm-8 text-center text-md-left">
                     <div class="text-white">
-                        <h2 class="text-lg mb-30">Find The <span class="has-line line-primary">Perfect Tutor</span> for Online & Offline</h2>
+                        <h2 class="text-lg mb-30">Find The <span class="has-line line-primary">Perfect Course</span> for Successful Career</h2>
                         <p class="h4">Education now more easy then before</p>
                         
                     </div>
@@ -230,13 +230,80 @@
                 </div>
                 <div class="col-lg-5 mt-5 mt-lg-0">
                     <h2 class="section-title mb-30">Book A Class <span class="has-line">Be Professional</span></h2>
-                    <p class="mb-4">Weddings and any opinions suitable smallest nay. My he houses or months settle remove ladies appear. Engrossed suffering supposing he recommend. Commanded no of depending extremity recommend attention tolerably.</p>
-                    <a href="#!" class="btn btn-lg btn-secondary rounded-pill">Get in Touch</a>
+                <a href="{{route('web.contact')}}" class="btn btn-lg btn-secondary rounded-pill">Get in Touch</a>
                 </div>
             </div>
             </div>
         </section>
         <!-- end of section -->
+
+        <!-- start of courses section -->
+        <section class="section-padding branch pt-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="section-title">All Our <span class="has-line"> Branches</span></h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Bishmuri</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 91012 95562" tittle="Call Us"> +91 91012 95562</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Panbari</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 80112 02834" tittle="Call Us"> +91 80112 02834</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Bengtol</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 70023 20957" tittle="Call Us"> +91 70023 20957</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Runikhata</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 99543 42862" tittle="Call Us"> +91 99543 42862</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Bijni</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 96785 80104" tittle="Call Us"> +91 96785 80104</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Srirampur</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 70028 91378" tittle="Call Us"> +91 70028 91378</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ <!-- end of courses section -->
  
     @endsection
 

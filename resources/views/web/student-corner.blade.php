@@ -25,7 +25,7 @@
                         <h2 class="section-title text-white font-weight-bold mb-20">Student Profile</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent justify-content-center p-0 font-weight-600 mb-0">
-                            <li class="breadcrumb-item active" aria-current="page"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('web.index')}}">Home</a></li>
                             <li class="breadcrumb-item">Student Profile</li>
                             </ol>
                         </nav>

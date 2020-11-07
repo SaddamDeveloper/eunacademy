@@ -3232,6 +3232,9 @@ form.navbar-form.search-only .form-control::placeholder {
 
 .course-card {
   overflow: hidden;
+  border-color: #f16001;
+  border-radius: 30px 10px;
+  background: #f7f2dd;
 }
 
 .course-card .card-img-top {

@@ -27,6 +27,23 @@
 .gallery .col-md-3 a:hover img {
     opacity: .7;
 }
+.branch h5 {
+    cursor: default;
+}
+.branch i {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #f16001;
+}
+.branch p a, .branch p i {
+    font-size: 15px;
+    color: #f16001;
+    margin-bottom: 0px;
+}
+.branch p a:hover {
+    text-decoration: underline;
+    padding-left: 5px;
+}
 /* Responsive ( px ) */
 
 

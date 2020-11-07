@@ -17,5 +17,8 @@ Route::get('/Student-corner', function () {
     return view('web.student-corner');
 })->name('web.student-corner');
 
-// ========== Contact =========
+// ========== About =========
+Route::get('/About', function () {
+    return view('web.about');
+})->name('web.about');
 

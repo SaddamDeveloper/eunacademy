@@ -13,7 +13,7 @@
                     <h2 class="section-title text-white font-weight-bold mb-20">Contact</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent justify-content-center p-0 font-weight-600 mb-0">
-                        <li class="breadcrumb-item active" aria-current="page"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('web.index')}}">Home</a></li>
                         <li class="breadcrumb-item">Contact</li>
                         </ol>
                     </nav>
@@ -99,28 +99,25 @@
                     <div class="shadow-sm p-20 mt-4 rounded-sm bg-white d-block d-sm-flex align-items-center">
                         <i class="fas fa-phone fa-2x text-primary"></i>
                         <div class="ml-sm-4 mt-3 mt-sm-0">
-                        <h4 class="text-secondary font-weight-600 mb-1">Contact Details</h4>
-                        <p>Phone: <a href="tel:+7800123452" class="text-dark">+780 123 452</a></p>
-                        <p>Mail: <a href="mailto:contact@eduskill.com" class="text-dark">contact@eduskill.com</a></p>
+                            <h4 class="text-secondary font-weight-600 mb-1">Phone</h4>
+                            <p>Phone: <a href="tel:+7800123452" class="text-dark">+780 123 452</a></p>
                         </div>
                     </div>
                     <div class="shadow-sm p-20 mt-4 rounded-sm bg-white d-block d-sm-flex align-items-center">
                         <i class="fas fa-map-marked-alt fa-2x text-primary"></i>
                         <div class="ml-sm-4 mt-3 mt-sm-0">
-                        <h4 class="text-secondary font-weight-600 mb-1">Location</h4>
-                        <p>PO Box 97845 Baker st. 567, Los Angeles, California, US.</p>
+                            <h4 class="text-secondary font-weight-600 mb-1">Location</h4>
+                            <p>Assam</p>
                         </div>
                     </div>
                     <div class="shadow-sm p-20 mt-4 rounded-sm bg-white d-block d-sm-flex align-items-center">
-                        <i class="fas fa-user-clock fa-2x text-primary"></i>
+                        <i class="fas fa-envelope fa-2x text-primary"></i>
                         <div class="ml-sm-4 mt-3 mt-sm-0">
-                        <h4 class="text-secondary font-weight-600 mb-1">Opening Hours</h4>
-                        <p>Monday-Friday</p>
-                        <p>10:30a.m-7:00p.m</p>
+                            <h4 class="text-secondary font-weight-600 mb-1">Email</h4>
+                            <p>Mail: <a href="mailto:eunproaca@gmail.com" class="text-dark">eunproaca@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
         <!-- end of contact section -->

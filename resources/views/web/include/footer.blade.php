@@ -4,18 +4,9 @@
           <div class="col-md-12">
              <div class="py-5 px-3 px-sm-5 bg-light">
                 <div class="row align-items-center">
-                   <div class="col-lg-5">
+                   <div class="col-lg-12 text-center">
                       <div class="p-0 pr-lg-4">
-                         <h2 class="section-title mb-20">EUN ACADEMY</h2>
-                         <p>My he houses or months settle remove ladies appear. Engrossed suffering he recommend.</p>
-                      </div>
-                   </div>
-                   <div class="col-lg-7 mt-4 mt-lg-0">
-                      <div class="input-group newsletter-input-group d-block d-sm-flex">
-                         <input type="email" class="form-control px-4" placeholder="youmail@email.com" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                         <div class="input-group-append">
-                            <button class="btn btn-blue">Subscribe Us</button>
-                         </div>
+                         <h2 class="section-title mb-0">EUN ACADEMY</h2>
                       </div>
                    </div>
                 </div>
@@ -27,10 +18,10 @@
              <div class="col-lg-9 text-center text-lg-left mb-4 mb-lg-0">
                 <ul class="list-unstyled list-inline font-weight-500">
                    <li class="list-inline-item"><a href="{{route('web.index')}}" class="p-2 d-block text-link">Home</a></li>
-                   <li class="list-inline-item"><a href="{{route('web.index')}}" class="p-2 d-block text-link">About</a></li>
-                   <li class="list-inline-item"><a href="{{route('web.index')}}" class="p-2 d-block text-link">Courses</a></li>
-                   <li class="list-inline-item"><a href="{{route('web.gallery')}}" class="p-2 d-block text-link">Contact us</a></li>
+                   <li class="list-inline-item"><a href="{{route('web.about')}}" class="p-2 d-block text-link">About</a></li>
+                   <li class="list-inline-item"><a href="{{route('web.student-corner')}}" class="p-2 d-block text-link">Student Corner</a></li>
                    <li class="list-inline-item"><a href="{{route('web.gallery')}}" class="p-2 d-block text-link">Gallery</a></li>
+                   <li class="list-inline-item"><a href="{{route('web.contact')}}" class="p-2 d-block text-link">Contact us</a></li>
                 </ul>
              </div>
              <div class="col-lg-3 text-center text-lg-right">
