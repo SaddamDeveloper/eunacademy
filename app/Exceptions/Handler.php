@@ -65,7 +65,7 @@ class Handler extends ExceptionHandler
                 $login = 'branch.login';
                 break;
             default:
-                $login = 'branch.login';
+                $login = 'web.index';
                 break;
         }
         return redirect()->guest(route($login));
