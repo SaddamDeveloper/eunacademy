@@ -72,14 +72,6 @@ class SearchStudentController extends Controller
                     <div class="col-lg-4 col-sm-6">
                         <div class="media mt-25 align-items-center">
                         <div class="">
-                            <p>Contact Number</p>
-                            <h5 class="font-weight-600 text-blue">+91 '.$student->mobile.'</h5>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="media mt-25 align-items-center">
-                        <div class="">
                             <p>Session</p>
                             <h5 class="font-weight-600 text-blue">'.$student->start_date.'</h5>
                         </div>
@@ -92,7 +84,7 @@ class SearchStudentController extends Controller
             <div class="image-block">
                 <div class="row">
                     <div class="col-md-5 col-sm-5 col-6 offset-1 p-0">
-                        <img class="img-fluid" src="'.asset('branch/student/'. $student->photo).'" alt="">
+                        <img class="img-fluid" src="'.asset('branch/student/'. $student->photo).'" alt="" style="width:100px;height:100px">
                     </div>
                     <div class="col-md-5 col-sm-5 col-6 p-0">
                         <div class="img-fluid">'.$qr_code.'</div>
@@ -100,7 +92,7 @@ class SearchStudentController extends Controller
                 </div>
             </div>
             <div class="job-meta sign mt-3">
-                <img class="img-fluid" src="'.asset('branch/student/'. $student->sign).'" alt="">
+                <img class="img-fluid" src="'.asset('branch/student/'. $student->sign).'" alt="" style="background:#fff;margin:auto">
             </div>
             </div>
             </div>

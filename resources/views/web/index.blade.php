@@ -33,7 +33,7 @@
                         </a>
                         <h2 class="section-title mt-50 mb-25">What  Some Awesome Parent Says <span class="has-line">About Us</span></h2>
                         <p class="mb-40"><strong>EUN ACADEMY</strong> offers an inclusive Computer training in starte of Assam. The extensive practical training provided by Computer training institute in field of computer science with live projects and simulations. Such detailed Computer course has helped our students to get practical knowledge and secure job.</p>
-                        <a href="#!" class="btn btn-lg btn-secondary rounded-pill">Read More...</a>
+                        <a href="{{route('web.about')}}" class="btn btn-lg btn-secondary rounded-pill">Read More...</a>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,16 @@
                         <div class="card course-card shadow mt-40">
                             <div class="card-body text-center p-30">
                                 <i class="fa fa-map-marked-alt"></i>
-                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Bishmuri</p></h5>
+                                <h5 class="font-weight-600"><p class="text-blue">Kokrajhar, Gossaigaon </p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 93650 53648" tittle="Call Us"> +91 93650 53648</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">Kokrajhar, Bishmuri</p></h5>
                                 <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 91012 95562" tittle="Call Us"> +91 91012 95562</a></p>
                             </div>
                         </div>
@@ -259,8 +268,8 @@
                         <div class="card course-card shadow mt-40">
                             <div class="card-body text-center p-30">
                                 <i class="fa fa-map-marked-alt"></i>
-                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Panbari</p></h5>
-                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 80112 02834" tittle="Call Us"> +91 80112 02834</a></p>
+                                <h5 class="font-weight-600"><p class="text-blue">Kokrajhar, Srirampur</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 70028 91378" tittle="Call Us"> +91 70028 91378</a></p>
                             </div>
                         </div>
                     </div>
@@ -268,7 +277,16 @@
                         <div class="card course-card shadow mt-40">
                             <div class="card-body text-center p-30">
                                 <i class="fa fa-map-marked-alt"></i>
-                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Bengtol</p></h5>
+                                <h5 class="font-weight-600"><p class="text-blue">Chirang, Panbari</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 70020 47186" tittle="Call Us"> +91 70020 47186</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-6">
+                        <div class="card course-card shadow mt-40">
+                            <div class="card-body text-center p-30">
+                                <i class="fa fa-map-marked-alt"></i>
+                                <h5 class="font-weight-600"><p class="text-blue">Chirang, Bengtol</p></h5>
                                 <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 70023 20957" tittle="Call Us"> +91 70023 20957</a></p>
                             </div>
                         </div>
@@ -277,7 +295,7 @@
                         <div class="card course-card shadow mt-40">
                             <div class="card-body text-center p-30">
                                 <i class="fa fa-map-marked-alt"></i>
-                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Runikhata</p></h5>
+                                <h5 class="font-weight-600"><p class="text-blue">Chirang, Runikhata</p></h5>
                                 <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 99543 42862" tittle="Call Us"> +91 99543 42862</a></p>
                             </div>
                         </div>
@@ -286,7 +304,7 @@
                         <div class="card course-card shadow mt-40">
                             <div class="card-body text-center p-30">
                                 <i class="fa fa-map-marked-alt"></i>
-                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Bijni</p></h5>
+                                <h5 class="font-weight-600"><p class="text-blue">Chirang, Bijni</p></h5>
                                 <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 96785 80104" tittle="Call Us"> +91 96785 80104</a></p>
                             </div>
                         </div>
@@ -295,8 +313,8 @@
                         <div class="card course-card shadow mt-40">
                             <div class="card-body text-center p-30">
                                 <i class="fa fa-map-marked-alt"></i>
-                                <h5 class="font-weight-600"><p class="text-blue">EUN ACADEMY, Srirampur</p></h5>
-                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 70028 91378" tittle="Call Us"> +91 70028 91378</a></p>
+                                <h5 class="font-weight-600"><p class="text-blue">Chirang, Kajalgaon</p></h5>
+                                <p class="mt-2"><i class="fa fa-phone-alt"></i> <a href="tel:+91 70869 52625" tittle="Call Us"> +91 70869 52625</a></p>
                             </div>
                         </div>
                     </div>
@@ -363,5 +381,5 @@
             });
             });
         });
-     </script>
+    </script>
     @endsection
