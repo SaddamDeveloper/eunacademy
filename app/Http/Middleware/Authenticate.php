@@ -17,7 +17,6 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             if (Auth::guard($guard)->check()) {
-                dd($guard);
                 switch ($guard) {
                     case 'admin':
                        $route = 'admin/dashboard';

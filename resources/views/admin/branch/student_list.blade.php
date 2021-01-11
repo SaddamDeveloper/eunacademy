@@ -25,6 +25,7 @@
                         <th>Course</th>
                         <th>Email</th>
                         <th>Mobile</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody> 
@@ -40,6 +41,7 @@
                             <td>{{ $st->courses->name }}</td>
                             <td>{{ $st->email }}</td>
                             <td>{{ $st->mobile }}</td>
+                            <td><a href="{{ route('student.view', ['id' => encrypt($st->id)]) }}" target="_blank" class="btn btn-primary">View</a></td>
                         </tr>                      
                     @empty
                         <tr>
@@ -54,4 +56,11 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        $(function (){
+            var table = $('#student_list').DataTable({});
+        })
+    </script>
 @endsection

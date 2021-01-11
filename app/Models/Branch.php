@@ -24,4 +24,9 @@ class Branch extends Authenticatable
     {
         return $this->hasMany('App\Models\Student');
     }
+
+    public function courses()
+    {
+        return $this->hasMany('App\Models\Course');
+    }
 }

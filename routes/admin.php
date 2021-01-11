@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('/status/branch/{id}/{status}', 'BranchesController@status')->name('admin.status.branch');
             Route::get('/password/change/branch/{id}/', 'BranchesController@changePassword')->name('admin.change.password');
             Route::get('/password/branch/', 'BranchesController@doChangePassword')->name('admin.branch.change_password');
+
+            Route::get('/student/{id}', 'BranchesController@student')->name('student.view');
         });
         // Gallery
         Route::group(['namespace' => 'Gallery'], function () {

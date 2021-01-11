@@ -174,4 +174,15 @@ class BranchesController extends Controller
             return redirect()->back()->with('error', 'Something went wrong!');
         }
     }
+
+    public function student($id){
+        try {
+            $id = decrypt($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+
+        $student = Student::find($id);
+        return view('admin.student.index', compact('student'));
+    }
 }

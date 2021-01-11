@@ -25,7 +25,6 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-
             return redirect()->intended('/admin/dashboard');
         }
         return back()->withInput($request->only('email', 'remember'))->with('login_error', 'Username or password incorrect');

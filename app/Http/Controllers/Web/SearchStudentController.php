@@ -61,7 +61,7 @@ class SearchStudentController extends Controller
                         </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6">
+                    <div class="col-lg-6 col-sm-6">
                         <div class="media mt-25 align-items-center">
                         <div class="">
                             <p>DOB</p>

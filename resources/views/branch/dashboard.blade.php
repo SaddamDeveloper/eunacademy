@@ -60,5 +60,4 @@
     <a href="{{ route('branch.show.student') }}" class="btn btn-primary pull-right">More...</a>
   </div>
 </div>
-<!-- /page content -->
  @endsection
