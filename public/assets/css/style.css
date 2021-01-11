@@ -126,7 +126,7 @@ body {
 
 @media (max-width: 767px) {
   .section-padding {
-    padding: 90px 0;
+    padding: 30px 0;
   }
   .section-padding.pb-fix {
     padding-bottom: 60px;
@@ -170,6 +170,7 @@ body {
   .section-title {
     font-size: 32px;
     margin-top: -5px;
+    margin-bottom: 0;
   }
 }
 
@@ -2694,8 +2695,8 @@ form.navbar-form.search-only .form-control::placeholder {
 @media (max-width: 767px) {
   .banner-1,
   .banner-3 {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 
@@ -2955,6 +2956,9 @@ form.navbar-form.search-only .form-control::placeholder {
 @media (max-width: 575px) {
   .blog-half-bg-gray::after {
     height: 400px;
+  }
+  .banner-1 {
+    background-position-x: 80%;
   }
 }
 
@@ -3330,6 +3334,22 @@ a.scroll-to-top.show:hover {
 @media (max-width: 767px) {
   a.scroll-to-top.show {
     bottom: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .image-block .col-md-5 {
+    width: 50%;
+    text-align: center;
+    float: left;
+    margin: 0;
+  }
+  #print {
+    margin-left: calc(50% - 97px/2);
+  }
+  .row {
+      margin-right: 0;
+      margin-left: 0;
   }
 }
 

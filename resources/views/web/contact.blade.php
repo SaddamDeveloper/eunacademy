@@ -100,7 +100,7 @@
                         <i class="fas fa-phone fa-2x text-primary"></i>
                         <div class="ml-sm-4 mt-3 mt-sm-0">
                             <h4 class="text-secondary font-weight-600 mb-1">Phone</h4>
-                            <p>Phone: <a href="tel:+7800123452" class="text-dark">+780 123 452</a></p>
+                            <p>Phone: <a href="tel:+7800123452" class="text-dark">+91 86382 57498</a></p>
                         </div>
                     </div>
                     <div class="shadow-sm p-20 mt-4 rounded-sm bg-white d-block d-sm-flex align-items-center">
