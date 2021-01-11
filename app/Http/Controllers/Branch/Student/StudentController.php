@@ -137,7 +137,7 @@ class StudentController extends Controller
     }
     public function list()
     {
-        $query = Student::orderBy('created_at', 'DESC');
+        $query = Student::where('branch_id', Auth::guard('branch')->user()->id)->latest();
         return datatables()->of($query->get())
             ->addIndexColumn()
             ->addColumn('action', function ($row) {

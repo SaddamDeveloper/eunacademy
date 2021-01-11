@@ -81,7 +81,7 @@ class SearchStudentController extends Controller
                         <div class="media mt-25 align-items-center">
                         <div class="">
                             <p>Session</p>
-                            <h5 class="font-weight-600 text-blue">2020 - 2021</h5>
+                            <h5 class="font-weight-600 text-blue">'.$student->start_date.'</h5>
                         </div>
                         </div>
                     </div>
