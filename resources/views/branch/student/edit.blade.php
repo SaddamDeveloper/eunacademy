@@ -1,7 +1,6 @@
 @extends('branch.template.branch_master')
 
 @section('content')
-
 <div class="right_col" role="main">
   <div class="row">
 
