@@ -29,8 +29,8 @@ class StudentController extends Controller
             'regd_no' => 'required',
             'name' => 'required|string',
             'father_name' =>  'required|string',
-            'email' =>  'required|email|unique:branches',
-            'mobile' => 'required|numeric|min:10|unique:branches',
+            'email' =>  'email|unique:students,email',
+            'mobile' => 'required|numeric|digits:10|unique:students,mobile',
             'dob' => 'required',
             'gender' => 'required',
             'category' => 'required',
@@ -40,9 +40,10 @@ class StudentController extends Controller
             'city' =>  'required|string',
             'state' =>  'required|string',
             'pin' =>  'required|numeric',
+            'exam_passed' => 'array',
             'exam_passed.*' => 'required',
         ]);
-
+        
         if ($request->hasfile('photo')) {
             $photo = $request->file('photo');
             $destination = base_path() . '/public/branch/student/';
@@ -90,20 +91,24 @@ class StudentController extends Controller
                 $student->end_date = $request->input('end_date');
                 $student->save();
 
+                // Present Address
                 $address1 = new Address();
                 $address1->student_id = $student->id;
                 $address1->state = $request->input('state');
                 $address1->city = $request->input('city');
                 $address1->pin = $request->input('pin');
-                $address1->address = $request->input('address');
+                $address1->address = $request->input('present_address');
+                $address1->type = 1;
                 $address1->save();
 
+                // Permenat Address
                 $address2 = new Address();
                 $address2->student_id = $student->id;
                 $address2->state = $request->input('p_state');
                 $address2->city = $request->input('p_city');
                 $address2->pin = $request->input('p_pin');
                 $address2->address = $request->input('permanent_address');
+                $address2->type = 2;
                 $address2->save();
 
                 $student->present_address_id = $address1->id;
@@ -167,7 +172,7 @@ class StudentController extends Controller
             abort(404);
         }
 
-        $student = Student::find($id);
+        $student = Student::findOrFail($id);
         $course = $student->courses->name;
         $data = "Registration No: $student->registraion_no\nName : $student->name\nFather: $student->father_name\nCourse : $course\nMobile: $student->mobile";
         $qr_code = QrCode::generate($data);
@@ -192,7 +197,7 @@ class StudentController extends Controller
             'regd_no' => 'required',
             'name' => 'required|string',
             'father_name' =>  'required|string',
-            'email' =>  'required|email|unique:branches,email,' . $id,
+            'email' =>  'email|unique:branches,email,' . $id,
             'mobile' => 'required|numeric|min:10|unique:branches,mobile,' . $id,
             'dob' => 'required',
             'gender' => 'required',
@@ -293,18 +298,22 @@ class StudentController extends Controller
                 $student->end_date = $request->input('end_date');
                 $student->save();
 
+                // Present Address
                 $address1 = $student->present_address_id == null ? new Address() : Address::find($student->present_address_id);
                 $address1->state = $request->input('state');
                 $address1->city = $request->input('city');
                 $address1->pin = $request->input('pin');
                 $address1->address = $request->input('present_address');
+                $address1->type = 1;
                 $address1->save();
 
+                // Permanent Address
                 $address2 = $student->permanent_address_id == null ? new Address() : Address::find($student->permanent_address_id);
                 $address2->state = $request->input('p_state');
                 $address2->city = $request->input('p_city');
                 $address2->pin = $request->input('p_pin');
                 $address2->address = $request->input('permanent_address');
+                $address2->type = 2;
                 $address2->save();
 
                 $data = [];

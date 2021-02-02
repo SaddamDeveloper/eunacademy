@@ -90,7 +90,7 @@
                     </div>
                     <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
                         <label for="pin">Pin</label>
-                        <input type="number" class="form-control" value="{{ $student->presentAddress->state }}" disabled>
+                        <input type="number" class="form-control" value="{{ $student->presentAddress->pin }}" disabled>
                     </div>
                 </div>
                 <div class="form-row mb-10">

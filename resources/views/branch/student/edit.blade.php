@@ -235,7 +235,7 @@
                     <div class="form-row mb-10">
                         <div class="col-md-12 col-sm-12 col-xs-12 mb-3">
                             <label for="permanent_address">Permanent Address</label>
-                            <textarea name="permanent_address" id="permanent_address" class="form-control" placeholder="Enter Permanent Address">{{ old('permanent_address') }}</textarea>
+                            <textarea name="permanent_address" id="permanent_address" class="form-control" placeholder="Enter Permanent Address"> {{ $student->permanentAddress->address }} </textarea>
                             @if($errors->has('permanent_address'))
                                 <span class="invalid-feedback" role="alert" >
                                     <strong style="color:red">{{ $errors->first('permanent_address') }}</strong>

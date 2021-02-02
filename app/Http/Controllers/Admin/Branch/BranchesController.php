@@ -20,9 +20,9 @@ class BranchesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
-            'email' => 'required|email|unique:branches',
+            'email' => 'required|email|unique:branches,email',
             'password' => 'required|same:confirm_password|min:6',
-            'mobile' => 'required|numeric|min:10|unique:branches',
+            'mobile' => 'required|numeric|digits:10|unique:branches,mobile',
             'city'  =>  'required|string',
             'state' =>  'required|string'
         ]);

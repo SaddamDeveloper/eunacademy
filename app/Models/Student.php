@@ -23,11 +23,11 @@ class Student extends Model
     }
 
     public function presentAddress(){
-        return $this->hasOne('App\Models\Address', 'student_id', 'id');
+        return $this->hasOne('App\Models\Address', 'student_id', 'id')->where('type', 1);
     }
     
     public function permanentAddress(){
-        return $this->hasOne('App\Models\Address', 'student_id', 'id');
+        return $this->hasOne('App\Models\Address', 'student_id', 'id')->where('type', 2);
     }
 
     public function qualifications(){

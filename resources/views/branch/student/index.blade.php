@@ -78,7 +78,7 @@
                             <select name="gender" id="gender" class="form-control">
                                 <option value="" selected disabled>--Select Gender--</option>
                                 <option  {{old('gender') == 'Male'?'selected':''}}>Male</option>
-                                <option  {{old('gender') == 'Male'?'selected':''}}>Female</option>
+                                <option  {{old('gender') == 'Female'?'selected':''}}>Female</option>
                             </select>
                             @if($errors->has('gender'))
                                 <span class="invalid-feedback" role="alert" >
@@ -114,7 +114,7 @@
                                 <option value="" selected disabled>--Select Course--</option>
                                 @if (isset($courses) && !empty($courses))
                                     @foreach ($courses as $course)
-                                        <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                        <option value="{{ $course->id }}" {{ old('course') == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -192,7 +192,7 @@
                     <div class="form-row mb-10">
                         <div class="col-md-12 col-sm-12 col-xs-12 mb-3">
                             <label for="check">Same as Present Address</label>
-                            <input type="checkbox" value="{{ old('check') }}"  onclick="filladd()" {{ old('check') == 'checked' ?'checked':''}} name="check" id="check">
+                            <input type="checkbox" value="1"  onclick="filladd()" {{ old('check') == '1' ? 'checked':''}} name="check" id="check">
                         </div>
                     </div>
                     <div class="form-row mb-10">
@@ -238,7 +238,7 @@
                 </div>
                 <div class="well" style="overflow: auto">
                     <h2>Session Details</h2>
-                    <div class="form-row mb-3 input_fields_wrap">
+                    <div class="form-row mb-3">
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
                             <label for="start_date">Start Date</label>
                             <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}" class="form-control">
@@ -264,19 +264,19 @@
                     <div class="form-row mb-3 input_fields_wrap">
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Exam Passed</label>
-                            <input type="text" name="exam_passed[]" class="form-control" required placeholder="Exam Passed">
+                            <input type="text" name="exam_passed[]" value="{{ old('eaxam_passed.0') }}" class="form-control" placeholder="Exam Passed">
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Year of Passing</label>
-                            <input type="text" name="year_of_pass[]" class="form-control" required placeholder="Year of Passing">
+                            <input type="text" name="year_of_pass[]" class="form-control" value="{{ old('year_of_pass.0') }}" placeholder="Year of Passing">
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Board/Council</label>
-                            <input type="text" name="board[]" class="form-control" required  placeholder="Board/Council">
+                            <input type="text" name="board[]" class="form-control" value="{{ old('board.0') }}"  placeholder="Board/Council">
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Marks</label>
-                            <input type="number" name="marks[]" class="form-control" required placeholder="Marks">
+                            <input type="number" name="marks[]" class="form-control" value="{{ old('marks.0') }}" placeholder="Marks">
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <button class="btn btn-primary btn-rounded" id="add" style="margin-top: 24px;"> 
