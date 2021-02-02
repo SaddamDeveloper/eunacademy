@@ -81,15 +81,15 @@
                 <h4><u>Present Address</u></h4>
                 <div class="form-row mb-10">
                     <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                        <label for="city">City</label>
+                        <label for="city">City <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                         <input type="text" class="form-control" value="{{$student->presentAddress->city }}" disabled>
                     </div>
                     <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                        <label for="state">State</label>
+                        <label for="state">State <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                         <input type="text" class="form-control" value="{{ $student->presentAddress->state }}" disabled>
                     </div>
                     <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                        <label for="pin">Pin</label>
+                        <label for="pin">Pin <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                         <input type="number" class="form-control" value="{{ $student->presentAddress->pin }}" disabled>
                     </div>
                 </div>
@@ -127,19 +127,19 @@
                 <div class="form-row mb-3 input_fields_wrap">
                     @forelse ($student->qualifications ?: [] as $qualification)
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
-                            <label for="exam_passed">Exam Passed</label>
+                            <label for="exam_passed">Exam Passed <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" value="{{ $qualification->exam_passed }}" class="form-control" disabled>
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
-                            <label for="exam_passed">Year of Passing</label>
+                            <label for="exam_passed">Year of Passing <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" value="{{ $qualification->year_of_pass }}" class="form-control" disabled>
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
-                            <label for="exam_passed">Board/Council</label>
+                            <label for="exam_passed">Board/Council <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" value="{{ $qualification->board }}" class="form-control" disabled>
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
-                            <label for="exam_passed">Marks</label>
+                            <label for="exam_passed">Marks <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="number" value="{{ $qualification->marks }}" class="form-control" disabled>
                         </div>
                     @empty

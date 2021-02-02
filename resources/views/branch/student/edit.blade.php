@@ -15,10 +15,11 @@
         <div class="x_content">
             {{ Form::open(['method' => 'put','route'=>['branch.student.update','id'=> $student->id], 'enctype' => 'multipart/form-data']) }}
                 <div class="well" style="overflow: auto">
+                    <span class="invalid-feedback" role="alert" style="color:red">*</span></label> Required Fields
                     <h2>Basic Details</h2>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="regd_no">Regitration No</label>
+                            <label for="regd_no">Regitration No <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" class="form-control" name="regd_no" required value="{{ $student->registraion_no }}" placeholder="Enter Registration No"> 
                             @if($errors->has('regd_no'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
@@ -29,7 +30,7 @@
                     </div>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="name">Applicant Name</label>
+                            <label for="name">Applicant Name <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" class="form-control" name="name" required value="{{ $student->name }}"  placeholder="Enter Applicant Name">
                                 @if($errors->has('name'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
@@ -38,7 +39,7 @@
                                 @endif
                         </div>  
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="father_name">Fathers Name</label>
+                            <label for="father_name">Fathers Name <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                            <input type="text" class="form-control" name="father_name" required value="{{ $student->father_name }}"  placeholder="Enter Applicant Father Name">
                                 @if($errors->has('father_name'))
                                     <span class="invalid-feedback" role="alert" style="color:red">
@@ -58,7 +59,7 @@
                     </div>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="date">Mobile No</label>
+                            <label for="date">Mobile No <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="number" class="form-control" name="mobile" value="{{ $student->mobile }}" placeholder="Enter Mobile No">
                                 @if($errors->has('mobile'))
                                     <span class="invalid-feedback" role="alert" >
@@ -67,7 +68,7 @@
                                 @enderror
                         </div>       
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="dob">Date of Birth</label>
+                            <label for="dob">Date of Birth <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="date" class="form-control" name="dob" value="{{ $student->dob }}">
                                 @if($errors->has('dob'))
                                     <span class="invalid-feedback" role="alert" >
@@ -76,7 +77,7 @@
                                 @enderror
                         </div>       
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="gender">Gender</label>
+                            <label for="gender">Gender <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <select name="gender" id="gender" class="form-control">
                                 <option value="" selected disabled>--Select Gender--</option>
                                 <option  {{ $student->gender == 'Male'?'selected':''}}>Male</option>
@@ -91,7 +92,7 @@
                     </div>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="category">Category</label>
+                            <label for="category">Category <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <select name="category" id="category" class="form-control">
                                 <option value="" selected disabled>--Select Category--</option>
                                 <option  {{$student->category == 'General'?'selected':''}}>General</option>
@@ -111,7 +112,7 @@
                     <h2>Course</h2>
                     <div class="form-row mb-3"> 
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="course">Course</label>
+                            <label for="course">Course <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <select name="course" id="course" class="form-control">
                                 <option value="" disabled>--Select Course--</option>
                                 @if (isset($courses) && !empty($courses))
@@ -127,7 +128,7 @@
                             @enderror
                         </div> 
                         <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                            <label for="photo">Photo(Maximum 250 Kb is allowed)</label>
+                            <label for="photo">Photo(Maximum 250 Kb is allowed) <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="file" class="form-control" name="photo">
                             @if($errors->has('photo'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
@@ -139,7 +140,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-6 mb-3">
-                            <label for="sign">Signature(Maximum 250 Kb is Allowed)</label>
+                            <label for="sign">Signature(Maximum 250 Kb is Allowed) <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="file" class="form-control" name="sign">
                             @if($errors->has('sign'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
@@ -157,7 +158,7 @@
                     <h4><u>Present Address</u></h4>
                     <div class="form-row mb-10">
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="city">City</label>
+                            <label for="city">City <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" class="form-control" name="city" id="city" value="{{ !empty($student->presentAddress->city) ? $student->presentAddress->city : old('city')  }}" placeholder="Enter City">
                             @if($errors->has('city'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
@@ -166,7 +167,7 @@
                             @enderror
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="state">State</label>
+                            <label for="state">State <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" class="form-control" name="state" id="state" value="{{ $student->presentAddress->state }}" placeholder="Enter State">
                             @if($errors->has('state'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
@@ -175,7 +176,7 @@
                             @enderror
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12 mb-3">
-                            <label for="pin">Pin</label>
+                            <label for="pin">Pin <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="number" class="form-control" name="pin" id="pin" value="{{ $student->presentAddress->pin }}" placeholder="Enter PIN">
                             @if($errors->has('pin'))
                                 <span class="invalid-feedback" role="alert" style="color:red">
@@ -248,7 +249,7 @@
                     <h2>Session Details</h2>
                     <div class="form-row mb-3 input_fields_wrap">
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <label for="start_date">Start Date</label>
+                            <label for="start_date">Start Date <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="date" name="start_date" id="start_date" value="{{ $student->start_date }}" class="form-control">
                             @if($errors->has('start_date'))
                                 <span class="invalid-feedback" role="alert" >
@@ -257,7 +258,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
-                            <label for="end_date">End Date</label>
+                            <label for="end_date">End Date <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="date" name="end_date" id="end_date" value="{{ $student->end_date }}" class="form-control">
                             @if($errors->has('end_date'))
                                 <span class="invalid-feedback" role="alert" >
@@ -273,19 +274,19 @@
                         @forelse ($student->qualifications ?: [] as $qualification)
                             <input type="hidden" value="{{ $qualification->id }}" name="qualification_id[]">
                             <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <label for="exam_passed">Exam Passed</label>
+                                <label for="exam_passed">Exam Passed <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                                 <input type="text" value="{{ $qualification->exam_passed }}" name="exam_passed[]" class="form-control" required placeholder="Exam Passed">
                             </div>
                             <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
-                                <label for="exam_passed">Year of Passing</label>
+                                <label for="exam_passed">Year of Passing <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                                 <input type="text" value="{{ $qualification->year_of_pass }}" name="year_of_pass[]" class="form-control" required placeholder="Year of Passing">
                             </div>
                             <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
-                                <label for="exam_passed">Board/Council</label>
+                                <label for="exam_passed">Board/Council <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                                 <input type="text" value="{{ $qualification->board }}" name="board[]" class="form-control" required placeholder="Board/Council">
                             </div>
                             <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
-                                <label for="exam_passed">Marks</label>
+                                <label for="exam_passed">Marks <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                                 <input type="number" value="{{ $qualification->marks }}" name="marks[]" class="form-control" required placeholder="Marks">
                             </div>
                         @empty
