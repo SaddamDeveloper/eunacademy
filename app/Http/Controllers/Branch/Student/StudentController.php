@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Course;
 use App\Models\Qualification;
+use App\Models\Receipt;
+use App\Models\ReceiptItem;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -43,7 +45,7 @@ class StudentController extends Controller
             'exam_passed' => 'array',
             'exam_passed.*' => 'required',
         ]);
-        
+
         if ($request->hasfile('photo')) {
             $photo = $request->file('photo');
             $destination = base_path() . '/public/branch/student/';
@@ -148,6 +150,8 @@ class StudentController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = '
                <a href="' . route('branch.student.view', [encrypt($row->id)]) . '" class="btn btn-primary btn-sm" target="_blank">View</a>
+               <a href="' . route('branch.student.receipt', $row) . '" class="btn btn-default btn-sm" target="_blank">Money Receipt</a>
+               <a href="' . route('branch.student.view.reciepts', $row) . '" class="btn btn-primary btn-sm" target="_blank">View Receipts</a>
                <a href="' . route('branch.student.edit', [encrypt($row->id)]) . '" class="btn btn-info btn-sm" target="_blank">Edit</a>              
                <a href="' . route('branch.student.delete', [encrypt($row->id)]) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are You Want To Delete\')">Delete</a>              
                ';
@@ -318,7 +322,7 @@ class StudentController extends Controller
 
                 $data = [];
                 for ($i = 0; $i < count($request->qualification_id); $i++) {
-                    $data[] = [
+                    $data = [
                         'exam_passed' => $request->input('exam_passed')[$i],
                         'year_of_pass' => $request->input('year_of_pass')[$i],
                         'board' => $request->input('board')[$i],
@@ -376,6 +380,65 @@ class StudentController extends Controller
             return redirect()->back()->with('error', 'Something went wrong!');
         }
     }
+
+    public function getReceiptForm($id)
+    {
+        $student = Student::findOrFail($id);
+        return view('branch.student.receiptform', compact('student'));
+    }
+    public function postReceiptDatas(Request $request)
+    {
+        $this->validate($request, [
+            'discount'  =>  'required|numeric|min:0',
+            'products.*.name'   =>  'required|max:255',
+            'products.*.price'  => 'required|numeric|min:1',
+            'products.*.qty'    =>  'required|integer|min:1'
+        ]);
+
+        $products = collect($request->products)->transform(function ($product) {
+            $product['total'] = $product['qty'] * $product['price'];
+            return new ReceiptItem($product);
+        });
+
+        if ($products->isEmpty()) {
+            return response()
+                ->json([
+                    'products_empty'    =>  ['One or more products is required.']
+                ], 422);
+        }
+
+        $data = $request->except('products');
+        $data['sub_total'] = $products->sum('total');
+        $data['grand_total'] = $data['sub_total'] - $data['discount'];
+        $data['branch_id'] = Auth::guard('branch')->user()->id;
+        $data['invoice_date'] = Carbon::now()->toDateString();
+        $receipt = Receipt::create($data);
+        $receipt->money_receipt_no = $this->createMoneyReceiptNo($receipt->id);
+        $receipt->save();
+        $receipt->receiptItem()->saveMany($products);
+
+        return response()->json(['created'   =>  true, 'id'    =>  $receipt->id]);
+    }
+    public function getReceipt($id)
+    {
+        $receipt = Receipt::with('receiptItem')->findOrFail($id);
+        return view('branch.student.receipt', compact('receipt'));
+    }
+    public function getAllReceipt($id)
+    {
+        $receipts = Receipt::where('student_id', $id)->paginate(10);
+        return view('branch.student.viewreceipt', compact('receipts'));
+    }
+    public function searchReceipt(Request $request)
+    {   
+        if ($request->has('searchKey')) {
+            $search_key = $request->input('searchKey');
+            $receipts = Receipt::where('money_receipt_no', 'like', '%' . $search_key . '%')->orderBy('id', 'desc')->paginate(10);
+        } else {
+            $receipts = Receipt::orderBy('id', 'desc')->paginate(10);
+        }
+        return view('branch.student.viewreceipt', compact('receipts'));
+    }
     private function generateRegistrationNo($id)
     {
 
@@ -383,6 +446,12 @@ class StudentController extends Controller
         $year = Carbon::now()->year;
         $month = Carbon::now()->format('M');
         $id = 'STU' . '/' . $year . '/' . strtoupper($month) . '/' . $id;
+        return $id;
+    }
+
+    private function createMoneyReceiptNo($id)
+    {
+        $id = str_pad($id, 5, '0', STR_PAD_LEFT);
         return $id;
     }
 }

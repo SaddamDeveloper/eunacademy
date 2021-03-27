@@ -36,7 +36,7 @@
               <h1>Branch Login Form</h1>
               <div>
 
-                {{ Form::text('username', '',array('class' => 'form-control','placeholder'=>'Enter Email or Mobile','required')) }}
+                {{ Form::text('username', old('username'),array('class' => 'form-control','placeholder'=>'Enter Email or Mobile','required')) }}
                 @if ($message = Session::get('login_error'))
                   <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

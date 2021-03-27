@@ -38,4 +38,14 @@ class Student extends Model
     {
         return $this->belongsTo('App\Models\Branch', 'branch_id', 'id');
     }
+
+    /**
+     * Get all of the comments for the Student
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class);
+    }
 }

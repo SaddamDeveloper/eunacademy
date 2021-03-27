@@ -24,6 +24,11 @@ Route::group(['namespace' => 'Branch'], function () {
             Route::put('/update/student/{id}', 'StudentController@update')->name('branch.student.update');
             Route::get('/delete/student/{id}', 'StudentController@destroy')->name('branch.student.delete');
             Route::get('/status/student/{id}/{status}', 'StudentController@status')->name('branch.student.status');
+            Route::get('/receipt/form/{id}', 'StudentController@getReceiptForm')->name('branch.student.receipt');
+            Route::post('/data/store', 'StudentController@postReceiptDatas')->name('branch.student.receipt.store');
+            Route::get('/get/receipt/{id}', 'StudentController@getReceipt')->name('branch.get.receipt');
+            Route::get('/all/receipts/{id}', 'StudentController@getAllReceipt')->name('branch.student.view.reciepts');
+            Route::get('/search/receipts', 'StudentController@searchReceipt')->name('get.breanch.receipt');
         });
     });
 });

@@ -264,19 +264,39 @@
                     <div class="form-row mb-3 input_fields_wrap">
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Exam Passed <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
-                            <input type="text" name="exam_passed[]" value="{{ old('eaxam_passed.0') }}" class="form-control" placeholder="Exam Passed">
+                            <input type="text" name="exam_passed[]" value="{{ old('exam_passed.0') }}" class="form-control" placeholder="Exam Passed">
+                            @if($errors->has('exam_passed.0'))
+                                <span class="invalid-feedback" role="alert" >
+                                    <strong style="color:red">{{ $errors->first('exam_passed.0') }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Year of Passing <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" name="year_of_pass[]" class="form-control" value="{{ old('year_of_pass.0') }}" placeholder="Year of Passing">
+                             @if($errors->has('year_of_pass.0'))
+                                <span class="invalid-feedback" role="alert" >
+                                    <strong style="color:red">{{ $errors->first('year_of_pass.0') }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col-md-3 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Board/Council <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="text" name="board[]" class="form-control" value="{{ old('board.0') }}"  placeholder="Board/Council">
+                            @if($errors->has('board.0'))
+                                <span class="invalid-feedback" role="alert" >
+                                    <strong style="color:red">{{ $errors->first('board.0') }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <label for="exam_passed">Marks <span class="invalid-feedback" role="alert" style="color:red">*</span></label></label>
                             <input type="number" name="marks[]" class="form-control" value="{{ old('marks.0') }}" placeholder="Marks">
+                             @if($errors->has('marks.0'))
+                                <span class="invalid-feedback" role="alert" >
+                                    <strong style="color:red">{{ $errors->first('marks.0') }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
                             <button class="btn btn-primary btn-rounded" id="add" style="margin-top: 24px;"> 

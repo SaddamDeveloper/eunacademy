@@ -54,7 +54,7 @@
   <script src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
   <script src="{{asset('vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-
+  @stack('scripts')
   <!-- PNotify -->
   {{-- <script src="{{asset('src_files/vendors/pnotify/dist/pnotify.js')}}"></script>
   <script src="{{asset('src_files/vendors/pnotify/dist/pnotify.buttons.js')}}"></script>
