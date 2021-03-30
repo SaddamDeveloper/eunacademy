@@ -3,10 +3,9 @@
 @section('content')
 <div class="right_col" role="main">
   <div class="row">
-
       <div class="col-md-12">
           <div class="x_panel">
-              <div class="x_title">
+                <div class="x_title">
                   <h2>All Receipts</h2>
                   <div class="clearfix"></div>
                 </div>
