@@ -18,19 +18,27 @@ var app = new Vue({
         },
         create: function() {
             this.isProcessing = true;
-            this.$http.post('../../data/store', this.form)
-                .then(function(response) {
-                    console.log(response);
-                    if(response.data.created) {
-                        window.location = '../../get/receipt/' + response.data.id;
-                    } else {
-                        this.isProcessing = false;
-                    }
-                })
-                .catch(function(response) {
-                    this.isProcessing = false;
-                    Vue.set(this.$data, 'errors', response.data);
-                })
+             const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title: "Vue POST Request Example" })
+  };
+  fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+    .then(response => response.json())
+    .then(data => (this.postId = data.id));
+            // this.$http.post('../../data/store', this.form)
+            //     .then(function(response) {
+            //         console.log(response);
+            //         if(response.data.created) {
+            //             window.location = '../../get/receipt/' + response.data.id;
+            //         } else {
+            //             this.isProcessing = false;
+            //         }
+            //     })
+            //     .catch(function(response) {
+            //         this.isProcessing = false;
+            //         Vue.set(this.$data, 'errors', response.data);
+            //     })
         },
         update: function() {
             this.isProcessing = true;
